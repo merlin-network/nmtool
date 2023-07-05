@@ -16,9 +16,9 @@ Note that the most accurate documentation lives in the CLI itself. It's recommen
 
 Option 1:
 
-The `nmtool testnet bootstrap` command starts a local Nemo blockchain as a
-background docker container called `generated-nemonode-1`. The bootstrap command
-only starts the Nemo blockchain and Nemo REST server services.
+The `nmtool testnet bootstrap` command starts a local Fury blockchain as a
+background docker container called `generated-furynode-1`. The bootstrap command
+only starts the Fury blockchain and Fury REST server services.
 
 ```bash
 # Start new testnet
@@ -57,19 +57,19 @@ nmtool testnet down
 Additional flags can be added when initializing a testnet to add additional
 services:
 
-`--ibc`: Run Nemo testnet with an additional IBC chain. The IBC chain runs in the container named `ibcnode`. It has primary denom `ufury`.
+`--ibc`: Run Fury testnet with an additional IBC chain. The IBC chain runs in the container named `ibcnode`. It has primary denom `ufury`.
 
 Example:
 
 ```bash
-# Run Nemo testnet with an additional IBC chain
+# Run Fury testnet with an additional IBC chain
 nmtool testnet bootstrap --nemo.configTemplate master --ibc
 ```
 
-`--geth`: Run a go-ethereum node alongside the Nemo testnet. The geth node is
-initialized with the Nemo Bridge contract and test ERC20 tokens. The Nemo EVM
+`--geth`: Run a go-ethereum node alongside the Fury testnet. The geth node is
+initialized with the Fury Bridge contract and test ERC20 tokens. The Fury EVM
 also includes Multicall contracts deployed. The contract addresses can be found
-on the [Nemo-Labs/nemo-bridge](https://github.com/Nemo-Labs/nemo-bridge#development)
+on the [Fury-Labs/nemo-bridge](https://github.com/Fury-Labs/nemo-bridge#development)
 README.
 
 Example:
@@ -79,10 +79,10 @@ Example:
 nmtool testnet bootstrap --nemo.configTemplate master --geth
 ```
 
-Geth node ports are **not** default, as the Nemo EVM will use default JSON-RPC
+Geth node ports are **not** default, as the Fury EVM will use default JSON-RPC
 ports:
 
-Nemo EVM RPC Ports:
+Fury EVM RPC Ports:
 
 * HTTP JSON-RPC: `8545`
 * WS-RPC port: `8546`
@@ -102,15 +102,15 @@ with [this password](config/templates/geth/initstate/eth-password).
 
 ## Automated Chain Upgrade
 
-Nmtool supports running upgrades on a chain. To do this requires the nemo final docker image to have a registered upgrade handler.
-The upgrade will start a chain with the docker container tag from `--upgrade-base-image-tag`. Once it reaches height `--upgrade-height`, it halts the chain for an upgrade named `--upgrade-name`. At that point, the container is restated with the desired container: `NEMO_TAG` if defined, of if not defined, the default tag for the config template.
+Futool supports running upgrades on a chain. To do this requires the nemo final docker image to have a registered upgrade handler.
+The upgrade will start a chain with the docker container tag from `--upgrade-base-image-tag`. Once it reaches height `--upgrade-height`, it halts the chain for an upgrade named `--upgrade-name`. At that point, the container is restated with the desired container: `FURY_TAG` if defined, of if not defined, the default tag for the config template.
 
 **Example**:
 Test a chain upgrade from v0.19.2 -> v0.21.0 at height 15.
 
 Using an overridden docker image tag:
 ```
-$ NEMO_TAG=v0.21.0 nmtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-height 15 --upgrade-base-image-tag v0.19.2
+$ FURY_TAG=v0.21.0 nmtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-height 15 --upgrade-base-image-tag v0.19.2
 ```
 
 Using a config template:
@@ -123,7 +123,7 @@ $ nmtool testnet bootstrap --nemo.configTemplate v0.21 --upgrade-name v0.21.0 --
 
 REST APIs for both blockchains are exposed on localhost:
 
-- Nemo: http://localhost:1317
+- Fury: http://localhost:1317
 - Binance Chain: http://localhost:8080
 
 You can also interact with the blockchain using the `nemo` command line. In a
@@ -132,13 +132,13 @@ use it to send a query.
 
 ```bash
 # Add an alias to the dockerized nemo cli
-alias dnemo='docker exec -it generated_nemonode_1 nemo'
+alias dfury='docker exec -it generated_furynode_1 nemo'
 
 # Confirm that the alias has been added
 alias nemo
 
 # For versions before v0.16.x
-alias dkvcli='docker exec -it generated_nemonode_1 kvcli'
+alias dkvcli='docker exec -it generated_furynode_1 kvcli'
 ```
 
 Note that for some architectures or docker versions, the containers are generated with hyphens (`-`) instead of underscores (`_`).
@@ -146,8 +146,8 @@ Note that for some architectures or docker versions, the containers are generate
 You can test the set up and alias by executing a sample query:
 
 ```bash
-dnemo status
-dnemo q cdp params
+dfury status
+dfury q cdp params
 ```
 
 The chain has several accounts that are funded from genesis. A list of the account names can be found [here](config/common/addresses.json).
@@ -155,34 +155,34 @@ The chain has several accounts that are funded from genesis. A list of the accou
 The binary is pre-configured to have these keys in its keyring so you should be able to use them directly.
 ```bash
 # Example sending funds from `whale` to another account
-dnemo tx bank send whale [nemo-address-to-fund] 1000000ufury --gas-prices 0.001ufury -y
+dfury tx bank send whale [nemo-address-to-fund] 1000000ufury --gas-prices 0.001ufury -y
 
 # Check transaction result by tx hash
-dnemo q tx [tx-hash]
+dfury q tx [tx-hash]
 ```
 ### A note about eth accounts
 
-Account keys can be created with two different algorithms in Nemo: `secp256k1` and `eth_secp256k1`.
+Account keys can be created with two different algorithms in Fury: `secp256k1` and `eth_secp256k1`.
 Which algorithm is used is dictate by the presence of the `--eth` flag on key creation.
 
 Eth accounts can be exported for use in ethereum wallets like Metamask. A list of of the pre-funded eth accounts can be found [here](config/generate/genesis/auth.accounts/eth-accounts.json).
 Notable, `whale2` is an eth account. These keys can be easily imported into a wallet via their private keys:
 ```bash
 # DANGEROUS EXPORT OF PRIVATE KEY BELOW! BE CAREFUL WITH YOUR PRIVATE KEYS FOR MAINNET ACCOUNTS.
-dnemo keys unsafe-export-eth-key whale2
+dfury keys unsafe-export-eth-key whale2
 ```
 The above will output the hex-encoded ethereum private key that can be directly imported to Metamask or another EVM-supporting wallet.
 
 You can always import or generate new eth accounts as well:
 ```bash
 # generate new account
-dnemo keys add new-eth-account --eth
+dfury keys add new-eth-account --eth
 
-# recover an eth account from a mnemonic
-dnemo keys add new-eth-account2 --eth --recover
+# recover an eth account from a mfurynic
+dfury keys add new-eth-account2 --eth --recover
 eth flag specified: using coin-type 60 and signing algorithm eth_secp256k1
-> Enter your bip39 mnemonic
-# enter your mnemonic here
+> Enter your bip39 mfurynic
+# enter your mfurynic here
 
 # import an eth account from a hex-encoded ethereum private key
 nemo keys unsafe-import-eth-key new-eth-account3 [priv-key]

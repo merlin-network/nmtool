@@ -26,8 +26,8 @@ $ nmtool estimate-block-height 2050-05-22T15:00
 		RunE: func(_ *cobra.Command, args []string) error {
 			numRetries := 5
 
-			fmt.Printf("using endpoint %s\n", nemoGrpcUrl)
-			k, err := nemoclient.NewClient(nemoGrpcUrl)
+			fmt.Printf("using endpoint %s\n", furyGrpcUrl)
+			k, err := furyclient.NewClient(furyGrpcUrl)
 			if err != nil {
 				return fmt.Errorf("failed to create nemo grpc client: %s", err)
 			}
@@ -75,7 +75,7 @@ $ nmtool estimate-block-height 2050-05-22T15:00
 		},
 	}
 
-	cmd.PersistentFlags().StringVar(&nemoGrpcUrl, "node", "https://grpc.data.nemo.io:443", "nemo GRPC url to run queries against")
+	cmd.PersistentFlags().StringVar(&furyGrpcUrl, "node", "https://grpc.data.nemo.io:443", "nemo GRPC url to run queries against")
 
 	return cmd
 }

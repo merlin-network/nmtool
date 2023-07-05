@@ -28,8 +28,8 @@ available services: %s
 			}
 
 			// 2) generate a complete docker-compose config
-			if stringSlice(args).contains(nemoServiceName) {
-				if err := generate.GenerateNemoConfig(nemoConfigTemplate, generatedConfigDir); err != nil {
+			if stringSlice(args).contains(furyServiceName) {
+				if err := generate.GenerateFuryConfig(furyConfigTemplate, generatedConfigDir); err != nil {
 					return err
 				}
 			}
@@ -58,7 +58,7 @@ available services: %s
 		},
 	}
 
-	genConfigCmd.Flags().StringVar(&nemoConfigTemplate, "nemo.configTemplate", "master", "the directory name of the template used to generating the nemo config")
+	genConfigCmd.Flags().StringVar(&furyConfigTemplate, "nemo.configTemplate", "master", "the directory name of the template used to generating the nemo config")
 	genConfigCmd.Flags().BoolVar(&ibcFlag, "ibc", false, "flag for if ibc is enabled")
 	genConfigCmd.Flags().BoolVar(&gethFlag, "geth", false, "flag for if geth node is enabled")
 

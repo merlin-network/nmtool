@@ -3,7 +3,7 @@
     "@type": "/nemo.committee.v1beta1.MemberCommittee",
     "base_committee": {
       "id": "1",
-      "description": "Nemo Stability Committee",
+      "description": "Fury Stability Committee",
       "members": ["$committee"],
       "permissions": [
         { "@type": "/nemo.committee.v1beta1.TextPermission" },
@@ -27,7 +27,7 @@
             { "subspace": "cdp", "key": "CollateralParams" },
             { "subspace": "cdp", "key": "DebtParam" },
             { "subspace": "incentive", "key": "Active" },
-            { "subspace": "nemodist", "key": "Active" },
+            { "subspace": "furydist", "key": "Active" },
             { "subspace": "pricefeed", "key": "Markets" },
             { "subspace": "hard", "key": "MoneyMarkets" },
             { "subspace": "hard", "key": "MinimumBorrowUSDValue" }
@@ -43,7 +43,7 @@
     "@type": "/nemo.committee.v1beta1.MemberCommittee",
     "base_committee": {
       "id": "2",
-      "description": "Nemo Safety Committee",
+      "description": "Fury Safety Committee",
       "members": ["$committee"],
       "permissions": [
         { "@type": "/nemo.committee.v1beta1.SoftwareUpgradePermission" }
@@ -57,7 +57,7 @@
     "@type": "/nemo.committee.v1beta1.MemberCommittee",
     "base_committee": {
       "id": "3",
-      "description": "Nemo God Committee (testing only)",
+      "description": "Fury God Committee (testing only)",
       "members": ["$committee"],
       "permissions": [{ "@type": "/nemo.committee.v1beta1.GodPermission" }],
       "vote_threshold": "0.667000000000000000",

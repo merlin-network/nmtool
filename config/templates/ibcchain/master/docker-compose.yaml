@@ -2,7 +2,7 @@ version: '3'
 
 services:
     ibcnode:
-        image: "nemo/nemo:v0.21.0"
+        image: "nemo/fury:v0.21.0"
         # use the default ports, but shift them when exposing to host so they dont conflict.
         ports:
             # open rpc port

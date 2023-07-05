@@ -14,9 +14,9 @@ const (
 
 type Config struct {
 	ChainID                   string `env:"CHAIN_ID"`
-	NemoGrpcEndpoint          string `env:"NEMO_GRPC_ENDPOINT"`
-	DelegatorAccountsMnemonic string `env:"DELEGATOR_ACCOUNTS_MNEMONIC"`
-	DevWalletMnemonic         string `env:"DEV_WALLET_MNEMONIC"`
+	FuryGrpcEndpoint          string `env:"FURY_GRPC_ENDPOINT"`
+	DelegatorAccountsMnemonic string `env:"DELEGATOR_ACCOUNTS_MFURYNIC"`
+	DevWalletMnemonic         string `env:"DEV_WALLET_MFURYNIC"`
 	DefaultBaseAmount         string `env:"DEFAULT_BASE_AMOUNT" envDefault:"1_000_000_000"`
 	SkipLiquify               bool   `env:"SKIP_LIQUIFY"`
 

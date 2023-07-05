@@ -12,7 +12,7 @@
         "type": "string"
       },
       {
-        "name": "nemo_erc20_address",
+        "name": "fury_erc20_address",
         "type": "string"
       },
       {
@@ -141,8 +141,8 @@
     "nested_types": []
   },
   {
-    "msg_type_url": "/nemo.incentive.v1beta1.MsgClaimUSDXMintingReward",
-    "msg_value_type_name": "MsgValueIncentiveClaimUSDXMintingReward",
+    "msg_type_url": "/nemo.incentive.v1beta1.MsgClaimMUSDMintingReward",
+    "msg_value_type_name": "MsgValueIncentiveClaimMUSDMintingReward",
     "value_types": [
       {
         "name": "sender",

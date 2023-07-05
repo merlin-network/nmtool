@@ -12,20 +12,20 @@ import (
 )
 
 const (
-	nemoServiceName    = "nemo"
+	furyServiceName    = "nemo"
 	binanceServiceName = "binance"
 	deputyServiceName  = "deputy"
 
 	relayerImageTag = "nemo/relayer:v2.2.0"
 
-	nemoChainId = "highbury_710-1"
+	furyChainId = "highbury_710-1"
 	ibcChainId  = "highbury_710-2"
 )
 
 var (
 	ibcFlag            bool
 	gethFlag           bool
-	nemoConfigTemplate string
+	furyConfigTemplate string
 
 	chainUpgradeName         string
 	chainUpgradeHeight       int64
@@ -34,7 +34,7 @@ var (
 	generatedConfigDir        string
 	defaultGeneratedConfigDir string = filepath.Join(generate.ConfigTemplatesDir, "../..", "full_configs", "generated")
 
-	supportedServices = []string{nemoServiceName, binanceServiceName, deputyServiceName}
+	supportedServices = []string{furyServiceName, binanceServiceName, deputyServiceName}
 )
 
 // Cmd is the CLI command for starting nemo testnets with docker
@@ -47,7 +47,7 @@ func Cmd() *cobra.Command {
 
 	Processes are run via docker-compose. This command generates a docker-compose.yaml and other necessary config files that are synchronized with each so the services all work together.
 
-	By default this command will generate configuration for a nmd node and rest server, a binance node and rest server, and a deputy. And then 'run docker-compose up'.
+	By default this command will generate configuration for a fud node and rest server, a binance node and rest server, and a deputy. And then 'run docker-compose up'.
 	This is the equivalent of running 'testnet gen-config nemo binance deputy' then 'testnet up'.
 
 	Docker compose files are (by default) written to %s`, defaultGeneratedConfigDir),

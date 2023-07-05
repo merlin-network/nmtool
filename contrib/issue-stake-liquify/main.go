@@ -49,18 +49,18 @@ func main() {
 }
 
 // ProcessDelegationAllocations performs the following actions:
-// - fund each delegator account with the required amount of Nemo (via dev-wallet issuing)
+// - fund each delegator account with the required amount of Fury (via dev-wallet issuing)
 // - stake the nemo by designated weights to validators
 // - mint the bfury derivative token for all delegations
 // - deposit the liquid bonded nemo into the earn module
 func ProcessDelegationAllocations(cfg config.Config, allocations config.Allocations) error {
 	// create factory for generating account signers
-	makeSigner := SignerFactory(cfg.ChainID, cfg.NemoGrpcEndpoint)
+	makeSigner := SignerFactory(cfg.ChainID, cfg.FuryGrpcEndpoint)
 
 	numAccounts := allocations.GetNumAccounts()
 
 	// create a signer for each account and determine total delegation
-	// accounts are generated from the same mnemonic, using different address indices in the hd path
+	// accounts are generated from the same mfurynic, using different address indices in the hd path
 	signerByIdx := make(map[int]*signing.Signer, len(allocations.Delegations))
 	totalByIdx := make(map[int]sdk.Int, len(allocations.Delegations))
 	for addressIdx := 0; addressIdx < numAccounts; addressIdx++ {
@@ -152,7 +152,7 @@ type Data struct {
 	AddressIdx int
 }
 
-// SignerFactory returns a function of mnemonic & address index that creates a signer for that account
+// SignerFactory returns a function of mfurynic & address index that creates a signer for that account
 func SignerFactory(chainID, grpcEndpoint string) func(string, int) *signing.Signer {
 	grpcConn, err := grpc.NewGrpcConnection(grpcEndpoint)
 	if err != nil {
@@ -163,11 +163,11 @@ func SignerFactory(chainID, grpcEndpoint string) func(string, int) *signing.Sign
 	authClient := authtypes.NewQueryClient(grpcConn)
 	txClient := txtypes.NewServiceClient(grpcConn)
 
-	return func(mnemonic string, addressIdx int) *signing.Signer {
+	return func(mfurynic string, addressIdx int) *signing.Signer {
 		hdPath := hd.CreateHDPath(app.Bip44CoinType, 0, uint32(addressIdx))
-		privKeyBytes, err := hd.Secp256k1.Derive()(mnemonic, "", hdPath.String())
+		privKeyBytes, err := hd.Secp256k1.Derive()(mfurynic, "", hdPath.String())
 		if err != nil {
-			log.Fatalf("failed to generate mnemonic for account %d: %s", addressIdx, privKeyBytes)
+			log.Fatalf("failed to generate mfurynic for account %d: %s", addressIdx, privKeyBytes)
 		}
 		privKey := &secp256k1.PrivKey{Key: privKeyBytes}
 
@@ -239,7 +239,7 @@ func DelegateByWeightedDistribution(
 			)
 			break
 		}
-		// skip sending 0 NEMO
+		// skip sending 0 FURY
 		if distribution.Weights[i] == 0 {
 			log.Printf("delegator %d has 0 weight for validator %d, skipping\n", addressIdx, i)
 			continue

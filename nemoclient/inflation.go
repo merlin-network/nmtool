@@ -1,4 +1,4 @@
-package nemoclient
+package furyclient
 
 import (
 	"fmt"

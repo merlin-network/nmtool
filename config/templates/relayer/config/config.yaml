@@ -20,12 +20,12 @@ chains:
       output-format: json
       sign-mode: direct
       extra-codecs: []
-  nemo:
+  fury:
     type: cosmos
     value:
       key: testkey
       chain-id: highbury_710-1
-      rpc-addr: http://nemonode:26657
+      rpc-addr: http://furynode:26657
       account-prefix: nemo
       keyring-backend: test
       gas-adjustment: 1.2

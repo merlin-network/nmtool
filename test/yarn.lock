@@ -169,7 +169,7 @@
 "@tendermint/belt@0.2.1":
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/@tendermint/belt/-/belt-0.2.1.tgz#f1f0df8f2c1847d175b5aa6968b3389de34f3f2b"
-  integrity sha512-Z3byTEpbSfrMaNx431pr8P4nrFshWz7WiFqxv/cTVgRENCVfndygOz0W15qC1pgqBhhnQPLEnmdP/GIyiS7JWg==
+  integrity sha512-Z3byTEpbSfrMaNx431pr8P4nrFshWz7WiFqxv/cTVgRENCVfndygOz0W15qC1pgqBhhnQPLEfudP/GIyiS7JWg==
   dependencies:
     "@tendermint/types" "0.1.1"
 
@@ -954,7 +954,7 @@ minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
 minimalistic-crypto-utils@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
-  integrity sha1-9sAMHAsIIkblxNmd+4x8CDsrWCo=
+  integrity sha1-9sAMHAsIIkblxFud+4x8CDsrWCo=
 
 minimist@^1.2.0, minimist@^1.2.3, minimist@^1.2.5:
   version "1.2.5"

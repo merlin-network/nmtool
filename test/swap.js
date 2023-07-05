@@ -1,7 +1,7 @@
-const Nemo = require('@kava-labs/javascript-sdk');
+const Fury = require('@kava-labs/javascript-sdk');
 const { sleep } = require("./helpers.js");
 
-const incomingSwap = async (nemoClient, bnbClient, assets, denom, amount) => {
+const incomingSwap = async (furyClient, bnbClient, assets, denom, amount) => {
   const assetInfo = assets[denom];
   if(!assetInfo) {
       throw new Error(denom + " is not supported by nmtool BEP3");
@@ -13,8 +13,8 @@ const incomingSwap = async (nemoClient, bnbClient, assets, denom, amount) => {
   // Addresses involved in the swap
   const sender = bnbClient.getClientKeyAddress();
   const recipient = assetInfo.binanceChainDeputyHotWallet; // deputy's address on Binance Chain
-  const senderOtherChain = assetInfo.nemoDeputyHotWallet; // deputy's address on Nemo
-  const recipientOtherChain = nemoClient.wallet.address;
+  const senderOtherChain = assetInfo.furyDeputyHotWallet; // deputy's address on Fury
+  const recipientOtherChain = furyClient.wallet.address;
 
   // Format asset/amount parameters as tokens, expectedIncome
   const tokens = [
@@ -29,9 +29,9 @@ const incomingSwap = async (nemoClient, bnbClient, assets, denom, amount) => {
   const heightSpan = 10001;
 
   // Generate random number hash from timestamp and hex-encoded random number
-  let randomNumber = Nemo.utils.generateRandomNumber();
+  let randomNumber = Fury.utils.generateRandomNumber();
   const timestamp = Math.floor(Date.now() / 1000);
-  const randomNumberHash = Nemo.utils.calculateRandomNumberHash(
+  const randomNumberHash = Fury.utils.calculateRandomNumberHash(
     randomNumber,
     timestamp
   );
@@ -61,55 +61,55 @@ const incomingSwap = async (nemoClient, bnbClient, assets, denom, amount) => {
     console.log('Tx error:', res);
     return;
   }
-  // Wait for deputy to see the new swap on Binance Chain and relay it to Nemo
+  // Wait for deputy to see the new swap on Binance Chain and relay it to Fury
   console.log('Waiting for deputy to witness and relay the swap...');
-  console.log('Expected Nemo swap ID:', swapIDs.dest);
+  console.log('Expected Fury swap ID:', swapIDs.dest);
 
   await sleep(45000); // 45 seconds
-  await nemoClient.getSwap(swapIDs.dest);
+  await furyClient.getSwap(swapIDs.dest);
 
-  // Send claim swap tx using Nemo client
-  const txHashClaim = await nemoClient.claimSwap(
+  // Send claim swap tx using Fury client
+  const txHashClaim = await furyClient.claimSwap(
     swapIDs.dest,
     randomNumber
   );
-  console.log('Claim swap tx hash (Nemo): '.concat(txHashClaim));
+  console.log('Claim swap tx hash (Fury): '.concat(txHashClaim));
 
   // Check the claim tx hash
-  const txRes = await nemoClient.checkTxHash(txHashClaim, 15000);
+  const txRes = await furyClient.checkTxHash(txHashClaim, 15000);
   console.log('\nTx result:', txRes.raw_log);
 };
 
-const outgoingSwap = async(nemoClient, bnbClient, assets, denom, amount) => {
+const outgoingSwap = async(furyClient, bnbClient, assets, denom, amount) => {
   const assetInfo = assets[denom];
   if(!assetInfo) {
     throw new Error(denom + " is not supported by nmtool BEP3");
   }
 
-  const sender = nemoClient.wallet.address;
-  const recipient = assetInfo.nemoDeputyHotWallet; // deputy's address on nemo
+  const sender = furyClient.wallet.address;
+  const recipient = assetInfo.furyDeputyHotWallet; // deputy's address on nemo
   const senderOtherChain = assetInfo.binanceChainDeputyHotWallet; // deputy's address on bnbchain
   const recipientOtherChain = bnbClient.getClientKeyAddress();
 
   // Set up params
-  const asset = assetInfo.nemoDenom;
+  const asset = assetInfo.furyDenom;
 
-  const coins = Nemo.utils.formatCoins(amount, asset);
+  const coins = Fury.utils.formatCoins(amount, asset);
   const heightSpan = "250";
 
   // Generate random number hash from timestamp and hex-encoded random number
-  const randomNumber = Nemo.utils.generateRandomNumber();
+  const randomNumber = Fury.utils.generateRandomNumber();
   const timestamp = Math.floor(Date.now() / 1000);
-  const randomNumberHash = Nemo.utils.calculateRandomNumberHash(
+  const randomNumberHash = Fury.utils.calculateRandomNumberHash(
     randomNumber,
     timestamp
   );
   console.log("\nSecret random number:", randomNumber.toUpperCase());
 
   const swapIDs = calcSwapIDs(randomNumberHash, sender, senderOtherChain);
-  console.log('Expected Nemo swap ID:', swapIDs.origin);
+  console.log('Expected Fury swap ID:', swapIDs.origin);
 
-  const txHash = await nemoClient.createSwap(
+  const txHash = await furyClient.createSwap(
     recipient,
     recipientOtherChain,
     senderOtherChain,
@@ -119,9 +119,9 @@ const outgoingSwap = async(nemoClient, bnbClient, assets, denom, amount) => {
     heightSpan
   );
 
-  console.log("\nTx hash (Create swap on Nemo):", txHash);
+  console.log("\nTx hash (Create swap on Fury):", txHash);
 
-  // Wait for deputy to see the new swap on Nemo and relay it to Binance Chain
+  // Wait for deputy to see the new swap on Fury and relay it to Binance Chain
   console.log("Waiting for deputy to witness and relay the swap...")
   console.log('Expected Binance Chain swap ID:', swapIDs.dest);
   await sleep(45000); // 45 seconds
@@ -143,14 +143,14 @@ const outgoingSwap = async(nemoClient, bnbClient, assets, denom, amount) => {
 // Print swap IDs
 var calcSwapIDs = (randomNumberHash, sender, senderOtherChain) => {
   // Calculate the expected swap ID on origin chain
-  const originChainSwapID = Nemo.utils.calculateSwapID(
+  const originChainSwapID = Fury.utils.calculateSwapID(
     randomNumberHash,
     sender,
     senderOtherChain
   );
 
   // Calculate the expected swap ID on destination chain
-  const destChainSwapID = Nemo.utils.calculateSwapID(
+  const destChainSwapID = Fury.utils.calculateSwapID(
     randomNumberHash,
     senderOtherChain,
     sender

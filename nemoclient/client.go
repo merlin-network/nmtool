@@ -1,4 +1,4 @@
-package nemoclient
+package furyclient
 
 import (
 	"context"
@@ -11,7 +11,7 @@ import (
 	grpctypes "github.com/cosmos/cosmos-sdk/types/grpc"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	nemogrpc "github.com/kava-labs/go-tools/grpc"
+	furygrpc "github.com/kava-labs/go-tools/grpc"
 )
 
 type Client struct {
@@ -20,7 +20,7 @@ type Client struct {
 }
 
 func NewClient(grpcUrl string) (*Client, error) {
-	conn, err := nemogrpc.NewGrpcConnection(grpcUrl)
+	conn, err := furygrpc.NewGrpcConnection(grpcUrl)
 	if err != nil {
 		return &Client{}, err
 	}

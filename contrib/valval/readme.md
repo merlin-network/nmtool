@@ -32,7 +32,7 @@ Have `docker` & `docker-compose` installed.
 
 This example uses the following, but the instructions should work for any genesis:
 * starting genesis file: `./example-genesis.json`
-* new chain id: `nemomirror_2221-1`
+* new chain id: `clockend_4200-1`
 
 ## configure genesis to use our validators
 Replace top ten validators with our nodes:
@@ -41,7 +41,7 @@ Replace top ten validators with our nodes:
 ./gen.sh
 
 # replace validators in original genesis
-update-genesis-validators example-genesis.json --chain-id nemomirror_2221-10
+update-genesis-validators example-genesis.json --chain-id clockend_4200-10
 
 # copy updated genesis to all validator config directories
 ./copy-gen.sh
@@ -54,20 +54,20 @@ docker-compose up
 
 ## change the nemo version
 By default, this uses the `master` tag of the nemo docker image.
-You can override the tag with the `NEMO_IMAGE_TAG` env variable.
+You can override the tag with the `FURY_IMAGE_TAG` env variable.
 **NOTE: the docker image you use must be setup to run rocksdb.**
 
 To use a local version, first build & tag the nemo image:
 ```
-# wherever the Nemo-Labs/nemo git repo is
+# wherever the Fury-Labs/nemo git repo is
 cd ~/nemo
-docker build -f Dockerfile-rocksdb -t nemo/nemo:local .
+docker build -f Dockerfile-rocksdb -t nemo/fury:local .
 cd -
 ```
 
 Then run this with the new tag:
 ```sh
-NEMO_IMAGE_TAG=local docker-compose up --force-recreate
+FURY_IMAGE_TAG=local docker-compose up --force-recreate
 ```
 
 Note that `--force-recreate` is necessary if run previously. It will force the image tag from the environment to be picked up even if the containers have already been created.
@@ -85,7 +85,7 @@ may need to be added here. This is how:
 3. add another node to the docker compose (replace `11` in the name and `volumes` below with the new node index):
 ```yaml
   nemo-11:
-    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
+    image: "nemo/fury:${FURY_IMAGE_TAG:-master}"
     volumes:
       - "./nemo-11:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container

@@ -13,7 +13,7 @@ func MaccAddrCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "macc-address [module-name]",
 		Short: "Helper for getting the address of a module account.",
-		Example: `$ nmtool macc-address nemodist
+		Example: `$ nmtool macc-address furydist
 > fury1cj7njkw2g9fqx4e768zc75dp9sks8u9zlc7m2x
 
 $ nmtool macc-address liquid

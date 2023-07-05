@@ -15,7 +15,7 @@ import (
 
 // this env variable is used in supported nemo templates to allow override of the image tag
 // automated chain upgrades make use of it to switch between binary versions.
-const nemoTagEnv = "NEMO_TAG"
+const furyTagEnv = "FURY_TAG"
 
 func BootstrapCmd() *cobra.Command {
 	bootstrapCmd := &cobra.Command{
@@ -31,15 +31,15 @@ This command runs local networks by performing the following three steps:
 
 # Templates
 The building blocks of the bootstrap command's services are templates which are defined in the
-directory nmtool/config/templates. As of right now, the template you run Nemo with is configurable
-at runtime via the 'nemo.configTemplate' flag. The Nemo templates contain nemo config directories
+directory nmtool/config/templates. As of right now, the template you run Fury with is configurable
+at runtime via the 'nemo.configTemplate' flag. The Fury templates contain nemo config directories
 (including a genesis.json) that are supported with the corresponding nemo docker image tag.
 
-Some templates, like "master", support overriding the image tag via the NEMO_TAG env variable.
+Some templates, like "master", support overriding the image tag via the FURY_TAG env variable.
 
 # IBC
 The bootstrap command supports running a secondary chain and opening an IBC channel between the
-primary Nemo node and the secondary chain. To set this up, simply use the --ibc flag.
+primary Fury node and the secondary chain. To set this up, simply use the --ibc flag.
 
 Once the two chains are started, the necessary txs are run to open a channel between the two chains
 and a relayer is started to relay transactions between them. The primary denom of the secondary chain
@@ -51,7 +51,7 @@ flags are all required to run an automated software upgrade:
 
 --upgrade-name           - the name of the registered upgrade handler to be run.
 --upgrade-height         - the height at which the upgrade should occur.
---upgrade-base-image-tag - the docker image tag of Nemo that with which the chain is started.
+--upgrade-base-image-tag - the docker image tag of Fury that with which the chain is started.
 
 Note that the upgrade height must be high enough to facilitate the submission of an upgrade proposal,
 and the voting on it. If used with --ibc, note that the upgrade is initiated _after_ the IBC channel
@@ -71,11 +71,11 @@ $ nmtool testnet bootstrap --ibc
 Run nemo & an ethereum node:
 $ nmtool testnet bootstrap --geth
 
-The master template supports dynamic override of the Nemo node's container image:
-$ NEMO_TAG=v0.21.0 nmtool testnet bootstrap
+The master template supports dynamic override of the Fury node's container image:
+$ FURY_TAG=v0.21.0 nmtool testnet bootstrap
 
 Test a chain upgrade from v0.19.2 -> v0.21.0:
-$ NEMO_TAG=v0.21.0 nmtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-height 15 --upgrade-base-image-tag v0.19.2
+$ FURY_TAG=v0.21.0 nmtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-height 15 --upgrade-base-image-tag v0.19.2
 `,
 		Args: cobra.NoArgs,
 		RunE: func(_ *cobra.Command, _ []string) error {
@@ -96,7 +96,7 @@ $ NEMO_TAG=v0.21.0 nmtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 			}
 
 			// generate nemo node configuration
-			if err := generate.GenerateNemoConfig(nemoConfigTemplate, generatedConfigDir); err != nil {
+			if err := generate.GenerateFuryConfig(furyConfigTemplate, generatedConfigDir); err != nil {
 				return err
 			}
 			// handle ibc configuration
@@ -113,8 +113,8 @@ $ NEMO_TAG=v0.21.0 nmtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 			}
 
 			// pull the nemo image tag if not overridden to be "local"
-			nemoTagOverride := os.Getenv(nemoTagEnv)
-			if nemoTagOverride != "local" {
+			furyTagOverride := os.Getenv(furyTagEnv)
+			if furyTagOverride != "local" {
 				if err := dockerComposeCmd("pull").Run(); err != nil {
 					fmt.Println(err.Error())
 				}
@@ -125,7 +125,7 @@ $ NEMO_TAG=v0.21.0 nmtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 			// if this is empty, the docker-compose should default to intended image tag
 			if chainUpgradeBaseImageTag != "" {
 				upCmd.Env = os.Environ()
-				upCmd.Env = append(upCmd.Env, fmt.Sprintf("%s=%s", nemoTagEnv, chainUpgradeBaseImageTag))
+				upCmd.Env = append(upCmd.Env, fmt.Sprintf("%s=%s", furyTagEnv, chainUpgradeBaseImageTag))
 				fmt.Printf("starting chain with image tag %s\n", chainUpgradeBaseImageTag)
 			}
 			if err := upCmd.Run(); err != nil {
@@ -149,7 +149,7 @@ $ NEMO_TAG=v0.21.0 nmtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 		},
 	}
 
-	bootstrapCmd.Flags().StringVar(&nemoConfigTemplate, "nemo.configTemplate", "master", "the directory name of the template used to generating the nemo config")
+	bootstrapCmd.Flags().StringVar(&furyConfigTemplate, "nemo.configTemplate", "master", "the directory name of the template used to generating the nemo config")
 	bootstrapCmd.Flags().BoolVar(&ibcFlag, "ibc", false, "flag for if ibc is enabled")
 	bootstrapCmd.Flags().BoolVar(&gethFlag, "geth", false, "flag for if geth is enabled")
 
@@ -185,7 +185,7 @@ func setupIbcChannelAndRelayer() error {
 
 	fmt.Printf("Starting ibc connection between chains...\n")
 	// add new channel to relayer config
-	setupIbcPathCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", generatedPath("relayer"), "/home/relayer/.relayer"), "--network", "generated_default", relayerImageTag, "rly", "paths", "new", nemoChainId, ibcChainId, "transfer")
+	setupIbcPathCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", generatedPath("relayer"), "/home/relayer/.relayer"), "--network", "generated_default", relayerImageTag, "rly", "paths", "new", furyChainId, ibcChainId, "transfer")
 	setupIbcPathCmd.Stdout = os.Stdout
 	setupIbcPathCmd.Stderr = os.Stderr
 	if err := setupIbcPathCmd.Run(); err != nil {
@@ -241,13 +241,13 @@ func runChainUpgrade() error {
 	cmd := fmt.Sprintf("tx committee submit-proposal 3 %s --gas auto --gas-adjustment 1.2 --gas-prices 0.05ufury --from committee -y",
 		upgradeJson,
 	)
-	if err := runNemoCli(strings.Split(cmd, " ")...); err != nil {
+	if err := runFuryCli(strings.Split(cmd, " ")...); err != nil {
 		return err
 	}
 
 	// vote on the committee proposal
 	cmd = "tx committee vote 1 yes --from committee --gas auto --gas-adjustment 1.2 --gas-prices 0.01ufury -y"
-	if err := runNemoCli(strings.Split(cmd, " ")...); err != nil {
+	if err := runFuryCli(strings.Split(cmd, " ")...); err != nil {
 		return err
 	}
 
@@ -258,16 +258,16 @@ func runChainUpgrade() error {
 	fmt.Printf("chain has reached upgrade height (%d) and halted!\n", chainUpgradeHeight)
 
 	fmt.Println("restarting chain with upgraded image")
-	// this runs with the desired image because NEMO_TAG will be correctly set, or if that is unset,
+	// this runs with the desired image because FURY_TAG will be correctly set, or if that is unset,
 	// the docker-compose files supporting upgrades default to the desired template version.
-	if err := dockerComposeCmd("up", "--force-recreate", "-d", "nemonode").Run(); err != nil {
+	if err := dockerComposeCmd("up", "--force-recreate", "-d", "furynode").Run(); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-// writeUpgradeProposal writes a proposal json to a file in the nemonode container and returns the path
+// writeUpgradeProposal writes a proposal json to a file in the furynode container and returns the path
 func writeUpgradeProposal() (string, error) {
 	content := fmt.Sprintf(`{
 		"@type": "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal",
@@ -296,7 +296,7 @@ func waitForBlock(n int64, timeout time.Duration) error {
 func blockGTE(n int64) backoff.Operation {
 	return func() error {
 		cmd := "nemo status | jq -r .sync_info.latest_block_height"
-		out, err := exec.Command("docker-compose", "-f", generatedPath("docker-compose.yaml"), "exec", "-T", "nemonode", "bash", "-c", cmd).Output()
+		out, err := exec.Command("docker-compose", "-f", generatedPath("docker-compose.yaml"), "exec", "-T", "furynode", "bash", "-c", cmd).Output()
 		if err != nil {
 			return err
 		}
@@ -312,12 +312,12 @@ func blockGTE(n int64) backoff.Operation {
 	}
 }
 
-// runNemoCli execs into the nemo container and runs `nemo args...`
-func runNemoCli(args ...string) error {
+// runFuryCli execs into the nemo container and runs `nemo args...`
+func runFuryCli(args ...string) error {
 	pieces := make([]string, 4, len(args)+4)
 	pieces[0] = "exec"
 	pieces[1] = "-T"
-	pieces[2] = "nemonode"
+	pieces[2] = "furynode"
 	pieces[3] = "nemo"
 	pieces = append(pieces, args...)
 	return dockerComposeCmd(pieces...).Run()

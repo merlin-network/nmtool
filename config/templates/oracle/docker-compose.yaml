@@ -5,11 +5,11 @@ services:
     environment:
       CHAIN_ID: "nemo-localnet"
       # REST endpoint
-      LCD_URL: "http://nemonode:1317"
+      LCD_URL: "http://furynode:1317"
       # Cron tab for how frequently prices will be posted (ex: 1 minute)
       CRONTAB: "* * * * *"
-      # bip39 mnemonic of oracle
-      MNEMONIC: "desert october mammal tuition illness album engine solid enjoy harvest symptom rely camera unable okay avocado actual oppose remember lady dove canal argue cave"
+      # bip39 mfurynic of oracle
+      MFURYNIC: "desert october mammal tuition illness album engine solid enjoy harvest symptom rely camera unable okay avocado actual oppose remember lady dove canal argue cave"
       # List of markets the oracle will post prices for. See pricefeed parameters for the list of active markets.
       MARKET_IDS: "bnb:usd,bnb:usd:30"
       # percentage deviation from previous price needed to trigger a new price - (example 0.5%)

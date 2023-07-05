@@ -4,10 +4,10 @@
 
 We want a tool that can set up testnets of our various services in several different configurations. For example:
 
-- a nmd node, bnbchain node (with rest servers), and the deputy for integration testing the web app
-- a bare nmd node built from unmerged branches for helping with PR reviews
-- a local nmd node with genesis that closely mirrors mainnet to test out upcoming gov proposals
-- a nmd node and oracle to test out CDP top up bot
+- a fud node, bnbchain node (with rest servers), and the deputy for integration testing the web app
+- a bare fud node built from unmerged branches for helping with PR reviews
+- a local fud node with genesis that closely mirrors mainnet to test out upcoming gov proposals
+- a fud node and oracle to test out CDP top up bot
 - etc
 
 ## Proposal
@@ -26,7 +26,7 @@ Create go packages and/or cli tools only to generate a set of config files for d
 	```
 		generated_config/
 		|- nemo/
-			|- .nmd/
+			|- .fud/
 				|- config.toml
 				|- genesis.json
 		|- binance/

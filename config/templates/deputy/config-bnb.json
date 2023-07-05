@@ -27,7 +27,7 @@
     "bnb_start_height": 1,
     "bnb_hot_wallet_overflow": 4000000000000,
 
-    "other_chain": "NEMO",
+    "other_chain": "FURY",
     "other_chain_confirm_num": 2,
     "other_chain_decimal": 8,
     "other_chain_expire_height_span": 514,
@@ -61,10 +61,10 @@
     "prometheus_listen_addr": "0.0.0.0:9090"
   },
   "bnb_config": {
-    "key_type": "mnemonic",
+    "key_type": "mfurynic",
     "aws_region": "",
     "aws_secret_name": "",
-    "mnemonic": "almost design doctor exist destroy candy zebra insane client grocery govern idea library degree two rebuild coffee hat scene deal average fresh measure potato",
+    "mfurynic": "almost design doctor exist destroy candy zebra insane client grocery govern idea library degree two rebuild coffee hat scene deal average fresh measure potato",
     "rpc_addr": "http://bnbnode:26657",
     "symbol": "BNB",
     "deputy_addr": "bnb1zfa5vmsme2v3ttvqecfleeh2xtz5zghh49hfqe",
@@ -73,18 +73,18 @@
     "token_balance_alert_threshold": 2000000000000,
     "bnb_balance_alert_threshold": 2000000000000
   },
-  "nemo_config": {
-    "key_type": "mnemonic",
+  "fury_config": {
+    "key_type": "mfurynic",
     "aws_region": "",
     "aws_secret_name": "",
-    "mnemonic": "curtain camp spoil tiny vehicle pottery deer corn truly banner salmon lift yard throw open move state lamp van sign glow glue shrug faith",
-    "rpc_addr": "tcp://nemonode:26657",
+    "mfurynic": "curtain camp spoil tiny vehicle pottery deer corn truly banner salmon lift yard throw open move state lamp van sign glow glue shrug faith",
+    "rpc_addr": "tcp://furynode:26657",
     "symbol": "bnb",
     "deputy_addr": "fury1agcvt07tcw0tglu0hmwdecsnuxp2yd4590q7dn",
     "cold_wallet_addr": "fury1g33w0mh4mjllhaj3y4dcwkwquxgwrma9yrfeqa",
     "fetch_interval": 2,
     "token_balance_alert_threshold": 0,
-    "nemo_balance_alert_threshold": 50000000,
+    "fury_balance_alert_threshold": 50000000,
     "tx_fee": {
       "amount": [
         {

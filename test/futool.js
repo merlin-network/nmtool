@@ -1,13 +1,13 @@
-const Nemo = require('@kava-labs/javascript-sdk');
+const Fury = require('@kava-labs/javascript-sdk');
 const BnbApiClient = require('@binance-chain/javascript-sdk');
 const { sleep } = require("./helpers.js");
 
-const setup = async (nemoEndpoint, binanceEndpoint, nemoMnemonic, binanceMnemonic) => {
-    // Start new Nemo client
-    nemoClient = new Nemo.NemoClient(nemoEndpoint);
-    nemoClient.setWallet(nemoMnemonic);
-    nemoClient.setBroadcastMode("async");
-    await nemoClient.initChain();
+const setup = async (furyEndpoint, binanceEndpoint, furyMnemonic, binanceMnemonic) => {
+    // Start new Fury client
+    furyClient = new Fury.FuryClient(furyEndpoint);
+    furyClient.setWallet(furyMnemonic);
+    furyClient.setBroadcastMode("async");
+    await furyClient.initChain();
 
     // Start Binance Chain client
     const bnbClient = await new BnbApiClient.BncClient(binanceEndpoint);
@@ -42,16 +42,16 @@ const setup = async (nemoEndpoint, binanceEndpoint, nemoMnemonic, binanceMnemoni
       return result
     })
 
-    return { nemoClient: nemoClient, bnbClient: bnbClient };
+    return { furyClient: furyClient, bnbClient: bnbClient };
 }
 
-const loadNemoDeputies = async (nemoClient, assets, amount) => {
+const loadFuryDeputies = async (furyClient, assets, amount) => {
     var counter = 0;
     for (var denom in assets) {
         const assetInfo = assets[denom];
-        const coins = Nemo.utils.formatCoins(amount * assetInfo.conversionFactor, assetInfo.nemoDenom);
-        const txHash = await nemoClient.transfer(assetInfo.nemoDeputyHotWallet, coins);
-        console.log("Load", assetInfo.nemoDenom, "deputy:", txHash);
+        const coins = Fury.utils.formatCoins(amount * assetInfo.conversionFactor, assetInfo.furyDenom);
+        const txHash = await furyClient.transfer(assetInfo.furyDeputyHotWallet, coins);
+        console.log("Load", assetInfo.furyDenom, "deputy:", txHash);
 
         counter++;
         counter < Object.keys(assets).length ? await sleep(7000) : await sleep(3000);
@@ -77,6 +77,6 @@ const loadBinanceChainDeputies = async (bnbClient, assets, amount) => {
 
 module.exports = {
     setup,
-    loadNemoDeputies,
+    loadFuryDeputies,
     loadBinanceChainDeputies
 }

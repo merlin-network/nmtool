@@ -15,11 +15,11 @@ func DcCmd() *cobra.Command {
 $ nmtool testnet dc -- logs -f
 
 Get a shell in the nemo node container:
-$ nmtool testnet dc exec nemonode /bin/bash
+$ nmtool testnet dc exec furynode /bin/bash
 
 Run some nemo cli commands:
-$ nmtool testnet dc exec nemonode nemo keys add magic-account
-$ nmtool testnet dc exec nemonode -- nemo tx bank send whale <address> 1000000000ufury --gas-prices 1000ufury -y`,
+$ nmtool testnet dc exec furynode nemo keys add magic-account
+$ nmtool testnet dc exec furynode -- nemo tx bank send whale <address> 1000000000ufury --gas-prices 1000ufury -y`,
 		Args: cobra.ArbitraryArgs,
 		RunE: func(_ *cobra.Command, args []string) error {
 			cmd := []string{"docker-compose", "--file", generatedPath("docker-compose.yaml")}

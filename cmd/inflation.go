@@ -15,7 +15,7 @@ func InflationRootCmd() *cobra.Command {
 		Short: "Various utilities for checking realized inflation",
 	}
 
-	cmd.PersistentFlags().StringVar(&nemoGrpcUrl, "node", "https://grpc.data.nemo.io:443", "nemo GRPC url to run queries against")
+	cmd.PersistentFlags().StringVar(&furyGrpcUrl, "node", "https://grpc.data.nemo.io:443", "nemo GRPC url to run queries against")
 
 	cmd.AddCommand(AverageInflation())
 
@@ -45,8 +45,8 @@ $ nmtool inflation avg -- -1000 3000000
 		RunE: func(_ *cobra.Command, args []string) error {
 			var end int64
 			var err error
-			fmt.Printf("using endpoint %s\n", nemoGrpcUrl)
-			k, err := nemoclient.NewClient(nemoGrpcUrl)
+			fmt.Printf("using endpoint %s\n", furyGrpcUrl)
+			k, err := furyclient.NewClient(furyGrpcUrl)
 			if err != nil {
 				panic(fmt.Sprintf("failed to create nemo grpc client: %s", err))
 			}

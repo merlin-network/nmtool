@@ -9,7 +9,7 @@ import (
 	"github.com/fanfury-sports/nmtool/cmd/testnet"
 )
 
-var nemoGrpcUrl string
+var furyGrpcUrl string
 
 var rootCmd = &cobra.Command{
 	Use:   "nmtool",

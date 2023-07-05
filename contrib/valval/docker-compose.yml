@@ -1,7 +1,7 @@
 version: '3'
 services:
   nemo-1:
-    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
+    image: "nemo/fury:${FURY_IMAGE_TAG:-master}"
     ports:
       # open default nemo rpc port
       - "26657:26657"
@@ -23,7 +23,7 @@ services:
       - "-c"
       - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   nemo-2:
-    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
+    image: "nemo/fury:${FURY_IMAGE_TAG:-master}"
     volumes:
       - "./nemo-2:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
@@ -32,7 +32,7 @@ services:
       - "-c"
       - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   nemo-3:
-    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
+    image: "nemo/fury:${FURY_IMAGE_TAG:-master}"
     volumes:
       - "./nemo-3:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
@@ -41,7 +41,7 @@ services:
       - "-c"
       - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   nemo-4:
-    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
+    image: "nemo/fury:${FURY_IMAGE_TAG:-master}"
     volumes:
       - "./nemo-4:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
@@ -50,7 +50,7 @@ services:
       - "-c"
       - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   nemo-5:
-    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
+    image: "nemo/fury:${FURY_IMAGE_TAG:-master}"
     volumes:
       - "./nemo-5:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
@@ -59,7 +59,7 @@ services:
       - "-c"
       - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   nemo-6:
-    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
+    image: "nemo/fury:${FURY_IMAGE_TAG:-master}"
     volumes:
       - "./nemo-6:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
@@ -68,7 +68,7 @@ services:
       - "-c"
       - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   nemo-7:
-    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
+    image: "nemo/fury:${FURY_IMAGE_TAG:-master}"
     volumes:
       - "./nemo-7:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
@@ -77,7 +77,7 @@ services:
       - "-c"
       - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   nemo-8:
-    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
+    image: "nemo/fury:${FURY_IMAGE_TAG:-master}"
     volumes:
       - "./nemo-8:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
@@ -86,7 +86,7 @@ services:
       - "-c"
       - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   nemo-9:
-    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
+    image: "nemo/fury:${FURY_IMAGE_TAG:-master}"
     volumes:
       - "./nemo-9:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
@@ -95,7 +95,7 @@ services:
       - "-c"
       - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   nemo-10:
-    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
+    image: "nemo/fury:${FURY_IMAGE_TAG:-master}"
     volumes:
       - "./nemo-10:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
@@ -104,7 +104,7 @@ services:
       - "-c"
       - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   nemo-11:
-    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
+    image: "nemo/fury:${FURY_IMAGE_TAG:-master}"
     volumes:
       - "./nemo-11:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
@@ -113,7 +113,7 @@ services:
       - "-c"
       - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   nemo-12:
-    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
+    image: "nemo/fury:${FURY_IMAGE_TAG:-master}"
     volumes:
       - "./nemo-12:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
@@ -122,7 +122,7 @@ services:
       - "-c"
       - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   nemo-13:
-    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
+    image: "nemo/fury:${FURY_IMAGE_TAG:-master}"
     volumes:
       - "./nemo-13:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container

@@ -12,13 +12,13 @@
   "delegations": [
     {
       // "equal" distribution delegates base_amount to each validator
-      // example delegates 2,000 NEMO total, 1,000 NEMO to each validator (default if no `delegations`)
+      // example delegates 2,000 FURY total, 1,000 FURY to each validator (default if no `delegations`)
       "distribution": "equal",
       "base_amount": "1_000_000_000"
     },
     {
       // "custom" distribution delegates weight * base_amount to the corresponding validator
-      // example delegates 1,000 NEMO total, 900 to validator 0, and 100 to validator 1
+      // example delegates 1,000 FURY total, 900 to validator 0, and 100 to validator 1
       "distribution": "custom",
       "base_amount": "100_000_000",
       "weights": [9, 1]

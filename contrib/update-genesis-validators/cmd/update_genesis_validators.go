@@ -419,7 +419,7 @@ func UpdateGenesisFileWithNewValidators(
 		nextCommitteeId := uint64(len(committeeState.Committees) + 1)
 		godCommittee := committeetypes.MustNewMemberCommittee(
 			nextCommitteeId,
-			"Nemo God Committee (testing only)",
+			"Fury God Committee (testing only)",
 			[]sdk.AccAddress{sdk.MustAccAddressFromBech32(ugvGodCommitteeMember)},
 			[]committeetypes.Permission{&committeetypes.GodPermission{}},
 			sdk.MustNewDecFromStr("0.667000000000000000"),

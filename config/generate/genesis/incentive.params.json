@@ -1,5 +1,5 @@
 {
-  "usdx_minting_reward_periods": [
+  "musd_minting_reward_periods": [
     {
       "active": true,
       "rewards_per_second": { "amount": "122354", "denom": "ufury" },
@@ -108,7 +108,7 @@
     },
     {
       "active": true,
-      "collateral_type": "usdx",
+      "collateral_type": "musd",
       "start": "2021-12-08T14:00:00Z",
       "end": "2024-01-01T00:00:00Z",
       "rewards_per_second": [
@@ -228,7 +228,7 @@
     },
     {
       "active": true,
-      "collateral_type": "usdx",
+      "collateral_type": "musd",
       "start": "2022-04-21T14:00:00Z",
       "end": "2024-01-01T00:00:00Z",
       "rewards_per_second": [{ "amount": "31688", "denom": "ufury" }]
@@ -237,7 +237,7 @@
   "swap_reward_periods": [
     {
       "active": true,
-      "collateral_type": "ufury:usdx",
+      "collateral_type": "ufury:musd",
       "start": "2021-12-08T14:00:00Z",
       "end": "2024-01-01T00:00:00Z",
       "rewards_per_second": [
@@ -247,7 +247,7 @@
     },
     {
       "active": true,
-      "collateral_type": "swp:usdx",
+      "collateral_type": "swp:musd",
       "start": "2021-12-08T14:00:00Z",
       "end": "2024-01-01T00:00:00Z",
       "rewards_per_second": [
@@ -257,42 +257,42 @@
     },
     {
       "active": true,
-      "collateral_type": "hard:usdx",
+      "collateral_type": "hard:musd",
       "start": "2021-12-08T14:00:00Z",
       "end": "2024-01-01T00:00:00Z",
       "rewards_per_second": [{ "amount": "116880", "denom": "swp" }]
     },
     {
       "active": true,
-      "collateral_type": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:usdx",
+      "collateral_type": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:musd",
       "start": "2021-12-08T14:00:00Z",
       "end": "2024-01-01T00:00:00Z",
       "rewards_per_second": [{ "amount": "116880", "denom": "swp" }]
     },
     {
       "active": true,
-      "collateral_type": "ibc/4129EB76C01ED14052054BB975DE0C6C5010E12FFD9253C20C58BCD828BEE9A5:usdx",
+      "collateral_type": "ibc/4129EB76C01ED14052054BB975DE0C6C5010E12FFD9253C20C58BCD828BEE9A5:musd",
       "start": "2021-12-08T14:00:00Z",
       "end": "2024-01-01T00:00:00Z",
       "rewards_per_second": [{ "amount": "116880", "denom": "swp" }]
     },
     {
       "active": true,
-      "collateral_type": "ibc/C72DE26FFF16DE62BE2784E12229BDF5F4465CE8B10530426D6DB53255FF01B2:usdx",
+      "collateral_type": "ibc/C72DE26FFF16DE62BE2784E12229BDF5F4465CE8B10530426D6DB53255FF01B2:musd",
       "start": "2021-12-08T14:00:00Z",
       "end": "2024-01-01T00:00:00Z",
       "rewards_per_second": [{ "amount": "116880", "denom": "swp" }]
     },
     {
       "active": true,
-      "collateral_type": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518:usdx",
+      "collateral_type": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518:musd",
       "start": "2021-12-08T14:00:00Z",
       "end": "2024-01-01T00:00:00Z",
       "rewards_per_second": [{ "amount": "116880", "denom": "swp" }]
     },
     {
       "active": true,
-      "collateral_type": "busd:usdx",
+      "collateral_type": "busd:musd",
       "start": "2021-12-08T14:00:00Z",
       "end": "2024-01-01T00:00:00Z",
       "rewards_per_second": [{ "amount": "156880", "denom": "swp" }]
@@ -308,7 +308,7 @@
     },
     {
       "active": true,
-      "collateral_type": "usdx",
+      "collateral_type": "musd",
       "start": "2021-12-08T14:00:00Z",
       "end": "2024-01-01T00:00:00Z",
       "rewards_per_second": [{ "amount": "316880", "denom": "ufury" }]

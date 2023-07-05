@@ -13,7 +13,7 @@ var (
 )
 
 func GenerateDefaultConfig(generatedConfigDir string) error {
-	if err := GenerateNemoConfig("v0.10", generatedConfigDir); err != nil {
+	if err := GenerateFuryConfig("v0.10", generatedConfigDir); err != nil {
 		return err
 	}
 	if err := GenerateBnbConfig(generatedConfigDir); err != nil {
@@ -25,16 +25,16 @@ func GenerateDefaultConfig(generatedConfigDir string) error {
 	return nil
 }
 
-func GenerateNemoConfig(nemoConfigTemplate, generatedConfigDir string) error {
+func GenerateFuryConfig(furyConfigTemplate, generatedConfigDir string) error {
 	// copy templates into generated config folder
-	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "nemo", nemoConfigTemplate), filepath.Join(generatedConfigDir, "nemo"))
+	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "nemo", furyConfigTemplate), filepath.Join(generatedConfigDir, "nemo"))
 	if err != nil {
 		return err
 	}
 
 	// put together final compose file
 	err = overwriteMergeYAML(
-		filepath.Join(ConfigTemplatesDir, "nemo", nemoConfigTemplate, "docker-compose.yaml"),
+		filepath.Join(ConfigTemplatesDir, "nemo", furyConfigTemplate, "docker-compose.yaml"),
 		filepath.Join(generatedConfigDir, "docker-compose.yaml"),
 	)
 	return err

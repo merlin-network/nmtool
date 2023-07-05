@@ -26,8 +26,8 @@ func ExportCmd() *cobra.Command {
 				return err
 			}
 			// docker ps -aqf "name=containername"
-			nemoContainerIDCmd := exec.Command("docker", "ps", "-aqf", "name=generated_nemonode_1")
-			nemoContainer, err := nemoContainerIDCmd.Output()
+			furyContainerIDCmd := exec.Command("docker", "ps", "-aqf", "name=generated_furynode_1")
+			furyContainer, err := furyContainerIDCmd.Output()
 			if err != nil {
 				return err
 			}
@@ -38,9 +38,9 @@ func ExportCmd() *cobra.Command {
 				return err
 			}
 
-			makeNewNemoImageCmd := exec.Command("docker", "commit", strings.TrimSpace(string(nemoContainer)), "nemo-export-temp")
+			makeNewFuryImageCmd := exec.Command("docker", "commit", strings.TrimSpace(string(furyContainer)), "nemo-export-temp")
 
-			nemoImageOutput, err := makeNewNemoImageCmd.Output()
+			furyImageOutput, err := makeNewFuryImageCmd.Output()
 			if err != nil {
 				return err
 			}
@@ -51,15 +51,15 @@ func ExportCmd() *cobra.Command {
 				return err
 			}
 
-			localNemoMountPath := generatedPath("nemo", "initstate", ".nemo", "config")
+			localFuryMountPath := generatedPath("nemo", "initstate", ".nemo", "config")
 			localIbcMountPath := generatedPath("ibcchain", "initstate", ".nemo", "config")
 
-			nemoExportCmd := exec.Command(
+			furyExportCmd := exec.Command(
 				"docker", "run",
-				"-v", strings.TrimSpace(fmt.Sprintf("%s:/root/.nemo/config", localNemoMountPath)),
+				"-v", strings.TrimSpace(fmt.Sprintf("%s:/root/.nemo/config", localFuryMountPath)),
 				"nemo-export-temp",
 				"nemo", "export")
-			nemoExportJSON, err := nemoExportCmd.Output()
+			furyExportJSON, err := furyExportCmd.Output()
 			if err != nil {
 				return err
 			}
@@ -74,12 +74,12 @@ func ExportCmd() *cobra.Command {
 				return err
 			}
 			ts := time.Now().Unix()
-			nemoFilename := fmt.Sprintf("nemo-export-%d.json", ts)
+			furyFilename := fmt.Sprintf("nemo-export-%d.json", ts)
 			ibcFilename := fmt.Sprintf("ibc-export-%d.json", ts)
 
-			fmt.Printf("Created exports %s and %s\nCleaning up...", nemoFilename, ibcFilename)
+			fmt.Printf("Created exports %s and %s\nCleaning up...", furyFilename, ibcFilename)
 
-			err = os.WriteFile(nemoFilename, nemoExportJSON, 0644)
+			err = os.WriteFile(furyFilename, furyExportJSON, 0644)
 			if err != nil {
 				return err
 			}
@@ -89,8 +89,8 @@ func ExportCmd() *cobra.Command {
 			}
 
 			// docker ps -aqf "name=containername"
-			tempNemoContainerIDCmd := exec.Command("docker", "ps", "-aqf", "ancestor=nemo-export-temp")
-			tempNemoContainer, err := tempNemoContainerIDCmd.Output()
+			tempFuryContainerIDCmd := exec.Command("docker", "ps", "-aqf", "ancestor=nemo-export-temp")
+			tempFuryContainer, err := tempFuryContainerIDCmd.Output()
 			if err != nil {
 				return err
 			}
@@ -100,8 +100,8 @@ func ExportCmd() *cobra.Command {
 				return err
 			}
 
-			deleteNemoContainerCmd := exec.Command("docker", "rm", strings.TrimSpace(string(tempNemoContainer)))
-			err = deleteNemoContainerCmd.Run()
+			deleteFuryContainerCmd := exec.Command("docker", "rm", strings.TrimSpace(string(tempFuryContainer)))
+			err = deleteFuryContainerCmd.Run()
 			if err != nil {
 				return err
 			}
@@ -111,8 +111,8 @@ func ExportCmd() *cobra.Command {
 				return err
 			}
 
-			deleteNemoImageCmd := exec.Command("docker", "rmi", strings.TrimSpace(string(nemoImageOutput)))
-			err = deleteNemoImageCmd.Run()
+			deleteFuryImageCmd := exec.Command("docker", "rmi", strings.TrimSpace(string(furyImageOutput)))
+			err = deleteFuryImageCmd.Run()
 			if err != nil {
 				return err
 			}
