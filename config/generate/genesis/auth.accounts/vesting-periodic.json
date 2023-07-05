@@ -13,7 +13,7 @@
     "original_vesting": [
       {
         "amount": "5000000000",
-        "denom": "ukava"
+        "denom": "ufury"
       }
     ]
   },
@@ -23,7 +23,7 @@
       "amount": [
         {
           "amount": "5000000000",
-          "denom": "ukava"
+          "denom": "ufury"
         }
       ],
       "length": "31536000"

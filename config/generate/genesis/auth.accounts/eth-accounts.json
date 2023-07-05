@@ -43,7 +43,7 @@
     "@type": "/ethermint.types.v1.EthAccount",
     "base_account": {
       "account_number": "41",
-      "address": "kava1afcspmdzlqzn2c53krj4mt2yskv6wtrds2jqht",
+      "address": "fury1afcspmdzlqzn2c53krj4mt2yskv6wtrdu50jjr",
       "pub_key": null,
       "sequence": "1"
     },
@@ -53,7 +53,7 @@
     "@type": "/ethermint.types.v1.EthAccount",
     "base_account": {
       "account_number": "0",
-      "address": "kava1vtf08rd2z9fm8qwxa54y3el5vues8ty64qcdyr",
+      "address": "fury1vtf08rd2z9fm8qwxa54y3el5vues8ty6e79lpt",
       "pub_key": null,
       "sequence": "1"
     },
@@ -63,7 +63,7 @@
     "@type": "/ethermint.types.v1.EthAccount",
     "base_account": {
       "account_number": "0",
-      "address": "kava1wrrekcy2h0zs9shkruuwqsvsldq8hm70yad4ke",
+      "address": "fury1wrrekcy2h0zs9shkruuwqsvsldq8hm70grs8n3",
       "pub_key": null,
       "sequence": "1"
     },

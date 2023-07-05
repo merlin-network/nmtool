@@ -13,14 +13,14 @@ func MaccAddrCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "macc-address [module-name]",
 		Short: "Helper for getting the address of a module account.",
-		Example: `$ kvtool macc-address kavadist
-> kava1cj7njkw2g9fqx4e768zc75dp9sks8u9znxrf0w
+		Example: `$ nmtool macc-address nemodist
+> fury1cj7njkw2g9fqx4e768zc75dp9sks8u9zlc7m2x
 
-$ kvtool macc-address liquid
-> kava1gggszchqvw2l65my03mak6q5qfhz9cn2g0px29
+$ nmtool macc-address liquid
+> fury1gggszchqvw2l65my03mak6q5qfhz9cn2y3u50d
 
-$ kvtool macc-address hypothetical-module-name
-> kava1s9z272h8cacjjj84yps2fk2rvwpruc3juqpn85`,
+$ nmtool macc-address hypothetical-module-name
+> fury1s9z272h8cacjjj84yps2fk2rvwpruc3js7upzu`,
 		Args: cobra.ExactArgs(1),
 		Run: func(_ *cobra.Command, args []string) {
 			moduleName := args[0]

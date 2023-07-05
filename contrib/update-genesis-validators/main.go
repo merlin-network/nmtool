@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/kava-labs/kava/app"
-	"github.com/kava-labs/kvtool/contrib/update-genesis-validators/cmd"
+	"github.com/incubus-network/nemo/app"
+	"github.com/fanfury-sports/nmtool/contrib/update-genesis-validators/cmd"
 )
 
 func main() {

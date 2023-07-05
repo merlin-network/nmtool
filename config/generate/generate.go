@@ -8,12 +8,12 @@ import (
 
 var (
 	// ConfigTemplatesDir is the absolute path to the config templates directory.
-	// It's set at build time using an -X flag. eg -ldflags "-X github.com/kava-labs/kvtool/config/generate.ConfigTemplatesDir=/home/user1/kvtool/config/templates"
+	// It's set at build time using an -X flag. eg -ldflags "-X github.com/fanfury-sports/nmtool/config/generate.ConfigTemplatesDir=/home/user1/nmtool/config/templates"
 	ConfigTemplatesDir string
 )
 
 func GenerateDefaultConfig(generatedConfigDir string) error {
-	if err := GenerateKavaConfig("v0.10", generatedConfigDir); err != nil {
+	if err := GenerateNemoConfig("v0.10", generatedConfigDir); err != nil {
 		return err
 	}
 	if err := GenerateBnbConfig(generatedConfigDir); err != nil {
@@ -25,16 +25,16 @@ func GenerateDefaultConfig(generatedConfigDir string) error {
 	return nil
 }
 
-func GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir string) error {
+func GenerateNemoConfig(nemoConfigTemplate, generatedConfigDir string) error {
 	// copy templates into generated config folder
-	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "kava", kavaConfigTemplate), filepath.Join(generatedConfigDir, "kava"))
+	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "nemo", nemoConfigTemplate), filepath.Join(generatedConfigDir, "nemo"))
 	if err != nil {
 		return err
 	}
 
 	// put together final compose file
 	err = overwriteMergeYAML(
-		filepath.Join(ConfigTemplatesDir, "kava", kavaConfigTemplate, "docker-compose.yaml"),
+		filepath.Join(ConfigTemplatesDir, "nemo", nemoConfigTemplate, "docker-compose.yaml"),
 		filepath.Join(generatedConfigDir, "docker-compose.yaml"),
 	)
 	return err

@@ -6,21 +6,21 @@ there_is_a_new_validator=false
 
 mkdir -p keys
 for ((i = 1; i <= num_validators; i++)); do
-  home=kava-$i
+  home=nemo-$i
 
   # only generate home dirs that don't exist
   if [ ! -d $home ]; then
     there_is_a_new_validator=true
-    kava init val$i --home $home --chain-id kavamirror_2221-1 >/dev/null 2>&1
+    nemo init val$i --home $home --chain-id nemomirror_2221-1 >/dev/null 2>&1
 
     rm -rf $home/data
     rm $home/config/genesis.json
-    cp kava-1/config/init-data-directory.sh $home/config/init-data-directory.sh
-    cp kava-1/config/priv_validator_state.json.example $home/config/priv_validator_state.json.example
+    cp nemo-1/config/init-data-directory.sh $home/config/init-data-directory.sh
+    cp nemo-1/config/priv_validator_state.json.example $home/config/priv_validator_state.json.example
   fi
 
   cp $home/config/priv_validator_key.json keys/priv_validator_key_$(($i - 1)).json
-  peers+=("$(kava tendermint show-node-id --home $home)@$home:26656")
+  peers+=("$(nemo tendermint show-node-id --home $home)@$home:26656")
 
   # force use of rocksdb
   sed -i -e "s#^db_backend = .*#db_backend = \"rocksdb\"#" $home/config/config.toml
@@ -33,7 +33,7 @@ if [ "$there_is_a_new_validator" = true ]; then
   echo The number of validators has changed. Updating the persistent peers of each one.
 
   for ((i = 1; i <= num_validators; i++)); do
-    configtoml=kava-$i/config/config.toml
+    configtoml=nemo-$i/config/config.toml
     echo "$configtoml"
 
     persistent_peers=()

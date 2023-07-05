@@ -6,7 +6,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/kava-labs/kvtool/config/generate"
+	"github.com/fanfury-sports/nmtool/config/generate"
 )
 
 func GenConfigCmd() *cobra.Command {
@@ -17,7 +17,7 @@ func GenConfigCmd() *cobra.Command {
 
 available services: %s
 `, supportedServices),
-		Example:   "gen-config kava binance deputy --kava.configTemplate v0.10",
+		Example:   "gen-config nemo binance deputy --nemo.configTemplate v0.10",
 		ValidArgs: supportedServices,
 		Args:      cobra.MatchAll(cobra.MinimumNArgs(1), cobra.OnlyValidArgs),
 		RunE: func(_ *cobra.Command, args []string) error {
@@ -28,8 +28,8 @@ available services: %s
 			}
 
 			// 2) generate a complete docker-compose config
-			if stringSlice(args).contains(kavaServiceName) {
-				if err := generate.GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
+			if stringSlice(args).contains(nemoServiceName) {
+				if err := generate.GenerateNemoConfig(nemoConfigTemplate, generatedConfigDir); err != nil {
 					return err
 				}
 			}
@@ -58,7 +58,7 @@ available services: %s
 		},
 	}
 
-	genConfigCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "master", "the directory name of the template used to generating the kava config")
+	genConfigCmd.Flags().StringVar(&nemoConfigTemplate, "nemo.configTemplate", "master", "the directory name of the template used to generating the nemo config")
 	genConfigCmd.Flags().BoolVar(&ibcFlag, "ibc", false, "flag for if ibc is enabled")
 	genConfigCmd.Flags().BoolVar(&gethFlag, "geth", false, "flag for if geth node is enabled")
 

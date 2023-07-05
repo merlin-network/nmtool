@@ -27,7 +27,7 @@
     "bnb_start_height": 1,
     "bnb_hot_wallet_overflow": 100000000000000,
 
-    "other_chain": "KAVA",
+    "other_chain": "NEMO",
     "other_chain_confirm_num": 2,
     "other_chain_decimal": 8,
     "other_chain_expire_height_span": 514,
@@ -73,22 +73,22 @@
     "token_balance_alert_threshold": 50000000000000,
     "bnb_balance_alert_threshold": 50000000
   },
-  "kava_config": {
+  "nemo_config": {
     "key_type": "mnemonic",
     "aws_region": "",
     "aws_secret_name": "",
     "mnemonic": "grab charge flame lamp genuine accuse truth orange split can faith spoon twist romance input raccoon tissue slice hire sauce hope fork primary unlock",
-    "rpc_addr": "tcp://kavanode:26657",
+    "rpc_addr": "tcp://nemonode:26657",
     "symbol": "busd",
-    "deputy_addr": "kava1j9je7f6s0v6k7dmgv6u5k5ru202f5ffsc7af04",
-    "cold_wallet_addr": "kava1ektgdyy0z23qqnd67ns3qvfzgfgjd5xe82lf5c",
+    "deputy_addr": "fury1j9je7f6s0v6k7dmgv6u5k5ru202f5ffs5qqm2a",
+    "cold_wallet_addr": "fury1ektgdyy0z23qqnd67ns3qvfzgfgjd5xet5zm3s",
     "fetch_interval": 2,
     "token_balance_alert_threshold": 0,
-    "kava_balance_alert_threshold": 50000000,
+    "nemo_balance_alert_threshold": 50000000,
     "tx_fee": {
       "amount": [
         {
-          "denom": "ukava",
+          "denom": "ufury",
           "amount": "50000"
         }
       ],

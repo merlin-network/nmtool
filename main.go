@@ -1,6 +1,6 @@
 package main
 
-import "github.com/kava-labs/kvtool/cmd"
+import "github.com/fanfury-sports/nmtool/cmd"
 
 func main() {
 	cmd.Execute()

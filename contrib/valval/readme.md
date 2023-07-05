@@ -3,7 +3,7 @@ This allows you to do things like start networks from nonzero height exports.
 
 The problem with nonzero height exports is that even if your validator has a controlling share of the power, it will not produce blocks until it is caught up, but it won't consider itself caught up until it can contact at least one other peer in the network.
 
-Maybe someday this is built into kvtool or better automated. For now, this is how to do it manually.
+Maybe someday this is built into nmtool or better automated. For now, this is how to do it manually.
 
 # UPDATE & DISCLAIMER
 
@@ -32,7 +32,7 @@ Have `docker` & `docker-compose` installed.
 
 This example uses the following, but the instructions should work for any genesis:
 * starting genesis file: `./example-genesis.json`
-* new chain id: `kavamirror_2221-1`
+* new chain id: `nemomirror_2221-1`
 
 ## configure genesis to use our validators
 Replace top ten validators with our nodes:
@@ -41,7 +41,7 @@ Replace top ten validators with our nodes:
 ./gen.sh
 
 # replace validators in original genesis
-update-genesis-validators example-genesis.json --chain-id kavamirror_2221-10
+update-genesis-validators example-genesis.json --chain-id nemomirror_2221-10
 
 # copy updated genesis to all validator config directories
 ./copy-gen.sh
@@ -52,22 +52,22 @@ update-genesis-validators example-genesis.json --chain-id kavamirror_2221-10
 docker-compose up
 ```
 
-## change the kava version
-By default, this uses the `master` tag of the kava docker image.
-You can override the tag with the `KAVA_IMAGE_TAG` env variable.
+## change the nemo version
+By default, this uses the `master` tag of the nemo docker image.
+You can override the tag with the `NEMO_IMAGE_TAG` env variable.
 **NOTE: the docker image you use must be setup to run rocksdb.**
 
-To use a local version, first build & tag the kava image:
+To use a local version, first build & tag the nemo image:
 ```
-# wherever the Kava-Labs/kava git repo is
-cd ~/kava
-docker build -f Dockerfile-rocksdb -t kava/kava:local .
+# wherever the Nemo-Labs/nemo git repo is
+cd ~/nemo
+docker build -f Dockerfile-rocksdb -t nemo/nemo:local .
 cd -
 ```
 
 Then run this with the new tag:
 ```sh
-KAVA_IMAGE_TAG=local docker-compose up --force-recreate
+NEMO_IMAGE_TAG=local docker-compose up --force-recreate
 ```
 
 Note that `--force-recreate` is necessary if run previously. It will force the image tag from the environment to be picked up even if the containers have already been created.
@@ -84,15 +84,15 @@ may need to be added here. This is how:
 
 3. add another node to the docker compose (replace `11` in the name and `volumes` below with the new node index):
 ```yaml
-  kava-11:
-    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+  nemo-11:
+    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
     volumes:
-      - "./kava-11:/root/.kava"
+      - "./nemo-11:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+      - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657"
 ```
 
 4. resume your regularly scheduled meganode running

@@ -7,7 +7,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/kava-labs/kvtool/kavaclient"
+	"github.com/fanfury-sports/nmtool/nemoclient"
 )
 
 const estimateBlockTimeFormat = "2006-01-02T15:04"
@@ -21,15 +21,15 @@ Time must be in UTC. Format times like YYYY-MM-DDThh:mm.
 `,
 		Args: cobra.ExactArgs(1),
 		Example: `Estimate height on May 22, 2050 at 15:00 UTC:
-$ kvtool estimate-block-height 2050-05-22T15:00
+$ nmtool estimate-block-height 2050-05-22T15:00
 `,
 		RunE: func(_ *cobra.Command, args []string) error {
 			numRetries := 5
 
-			fmt.Printf("using endpoint %s\n", kavaGrpcUrl)
-			k, err := kavaclient.NewClient(kavaGrpcUrl)
+			fmt.Printf("using endpoint %s\n", nemoGrpcUrl)
+			k, err := nemoclient.NewClient(nemoGrpcUrl)
 			if err != nil {
-				return fmt.Errorf("failed to create kava grpc client: %s", err)
+				return fmt.Errorf("failed to create nemo grpc client: %s", err)
 			}
 
 			now := time.Now()
@@ -75,7 +75,7 @@ $ kvtool estimate-block-height 2050-05-22T15:00
 		},
 	}
 
-	cmd.PersistentFlags().StringVar(&kavaGrpcUrl, "node", "https://grpc.data.kava.io:443", "kava GRPC url to run queries against")
+	cmd.PersistentFlags().StringVar(&nemoGrpcUrl, "node", "https://grpc.data.nemo.io:443", "nemo GRPC url to run queries against")
 
 	return cmd
 }

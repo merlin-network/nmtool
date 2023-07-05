@@ -9,19 +9,19 @@ import (
 	"time"
 
 	"github.com/cenkalti/backoff/v4"
-	"github.com/kava-labs/kvtool/config/generate"
+	"github.com/fanfury-sports/nmtool/config/generate"
 	"github.com/spf13/cobra"
 )
 
-// this env variable is used in supported kava templates to allow override of the image tag
+// this env variable is used in supported nemo templates to allow override of the image tag
 // automated chain upgrades make use of it to switch between binary versions.
-const kavaTagEnv = "KAVA_TAG"
+const nemoTagEnv = "NEMO_TAG"
 
 func BootstrapCmd() *cobra.Command {
 	bootstrapCmd := &cobra.Command{
 		Use:   "bootstrap",
-		Short: "A convenience command that creates a kava testnet with the input configTemplate (defaults to master)",
-		Long: `Generate a kava testnet and optionally run/integrate various other resources.
+		Short: "A convenience command that creates a nemo testnet with the input configTemplate (defaults to master)",
+		Long: `Generate a nemo testnet and optionally run/integrate various other resources.
 
 # General Overview
 This command runs local networks by performing the following three steps:
@@ -31,15 +31,15 @@ This command runs local networks by performing the following three steps:
 
 # Templates
 The building blocks of the bootstrap command's services are templates which are defined in the
-directory kvtool/config/templates. As of right now, the template you run Kava with is configurable
-at runtime via the 'kava.configTemplate' flag. The Kava templates contain kava config directories
-(including a genesis.json) that are supported with the corresponding kava docker image tag.
+directory nmtool/config/templates. As of right now, the template you run Nemo with is configurable
+at runtime via the 'nemo.configTemplate' flag. The Nemo templates contain nemo config directories
+(including a genesis.json) that are supported with the corresponding nemo docker image tag.
 
-Some templates, like "master", support overriding the image tag via the KAVA_TAG env variable.
+Some templates, like "master", support overriding the image tag via the NEMO_TAG env variable.
 
 # IBC
 The bootstrap command supports running a secondary chain and opening an IBC channel between the
-primary Kava node and the secondary chain. To set this up, simply use the --ibc flag.
+primary Nemo node and the secondary chain. To set this up, simply use the --ibc flag.
 
 Once the two chains are started, the necessary txs are run to open a channel between the two chains
 and a relayer is started to relay transactions between them. The primary denom of the secondary chain
@@ -51,7 +51,7 @@ flags are all required to run an automated software upgrade:
 
 --upgrade-name           - the name of the registered upgrade handler to be run.
 --upgrade-height         - the height at which the upgrade should occur.
---upgrade-base-image-tag - the docker image tag of Kava that with which the chain is started.
+--upgrade-base-image-tag - the docker image tag of Nemo that with which the chain is started.
 
 Note that the upgrade height must be high enough to facilitate the submission of an upgrade proposal,
 and the voting on it. If used with --ibc, note that the upgrade is initiated _after_ the IBC channel
@@ -62,20 +62,20 @@ As soon as the chain is configured & producing blocks, a committee proposal is s
 the chain. The committee uses First-Pass-the-Post voting so passes as soon as it gets consensus.
 The committee member account votes on the proposal and then we wait for the upgrade height to be
 reached. At that point, the chain halts and is restarted with the updated image tag.`,
-		Example: `Run kava node with particular template:
-$ kvtool testnet bootstrap --kava.configTemplate v0.12
+		Example: `Run nemo node with particular template:
+$ nmtool testnet bootstrap --nemo.configTemplate v0.12
 
-Run kava & another chain with open IBC channel & relayer:
-$ kvtool testnet bootstrap --ibc
+Run nemo & another chain with open IBC channel & relayer:
+$ nmtool testnet bootstrap --ibc
 
-Run kava & an ethereum node:
-$ kvtool testnet bootstrap --geth
+Run nemo & an ethereum node:
+$ nmtool testnet bootstrap --geth
 
-The master template supports dynamic override of the Kava node's container image:
-$ KAVA_TAG=v0.21.0 kvtool testnet bootstrap
+The master template supports dynamic override of the Nemo node's container image:
+$ NEMO_TAG=v0.21.0 nmtool testnet bootstrap
 
 Test a chain upgrade from v0.19.2 -> v0.21.0:
-$ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-height 15 --upgrade-base-image-tag v0.19.2
+$ NEMO_TAG=v0.21.0 nmtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-height 15 --upgrade-base-image-tag v0.19.2
 `,
 		Args: cobra.NoArgs,
 		RunE: func(_ *cobra.Command, _ []string) error {
@@ -95,8 +95,8 @@ $ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 				return fmt.Errorf("could not clear old generated config: %v", err)
 			}
 
-			// generate kava node configuration
-			if err := generate.GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
+			// generate nemo node configuration
+			if err := generate.GenerateNemoConfig(nemoConfigTemplate, generatedConfigDir); err != nil {
 				return err
 			}
 			// handle ibc configuration
@@ -112,9 +112,9 @@ $ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 				}
 			}
 
-			// pull the kava image tag if not overridden to be "local"
-			kavaTagOverride := os.Getenv(kavaTagEnv)
-			if kavaTagOverride != "local" {
+			// pull the nemo image tag if not overridden to be "local"
+			nemoTagOverride := os.Getenv(nemoTagEnv)
+			if nemoTagOverride != "local" {
 				if err := dockerComposeCmd("pull").Run(); err != nil {
 					fmt.Println(err.Error())
 				}
@@ -125,7 +125,7 @@ $ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 			// if this is empty, the docker-compose should default to intended image tag
 			if chainUpgradeBaseImageTag != "" {
 				upCmd.Env = os.Environ()
-				upCmd.Env = append(upCmd.Env, fmt.Sprintf("%s=%s", kavaTagEnv, chainUpgradeBaseImageTag))
+				upCmd.Env = append(upCmd.Env, fmt.Sprintf("%s=%s", nemoTagEnv, chainUpgradeBaseImageTag))
 				fmt.Printf("starting chain with image tag %s\n", chainUpgradeBaseImageTag)
 			}
 			if err := upCmd.Run(); err != nil {
@@ -149,14 +149,14 @@ $ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 		},
 	}
 
-	bootstrapCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "master", "the directory name of the template used to generating the kava config")
+	bootstrapCmd.Flags().StringVar(&nemoConfigTemplate, "nemo.configTemplate", "master", "the directory name of the template used to generating the nemo config")
 	bootstrapCmd.Flags().BoolVar(&ibcFlag, "ibc", false, "flag for if ibc is enabled")
 	bootstrapCmd.Flags().BoolVar(&gethFlag, "geth", false, "flag for if geth is enabled")
 
 	// optional data for running an automated chain upgrade
-	bootstrapCmd.Flags().StringVar(&chainUpgradeName, "upgrade-name", "", "name of automated chain upgrade to run, if desired. the upgrade must be defined in the kava image container.")
+	bootstrapCmd.Flags().StringVar(&chainUpgradeName, "upgrade-name", "", "name of automated chain upgrade to run, if desired. the upgrade must be defined in the nemo image container.")
 	bootstrapCmd.Flags().Int64Var(&chainUpgradeHeight, "upgrade-height", 0, "height of automated chain upgrade to run.")
-	bootstrapCmd.Flags().StringVar(&chainUpgradeBaseImageTag, "upgrade-base-image-tag", "", "the kava docker image tag that will be upgraded.\nthe chain is initialized from this tag and then upgraded to the new image.\nthe binary must be compatible with the kava.configTemplate genesis.json.")
+	bootstrapCmd.Flags().StringVar(&chainUpgradeBaseImageTag, "upgrade-base-image-tag", "", "the nemo docker image tag that will be upgraded.\nthe chain is initialized from this tag and then upgraded to the new image.\nthe binary must be compatible with the nemo.configTemplate genesis.json.")
 
 	return bootstrapCmd
 }
@@ -185,14 +185,14 @@ func setupIbcChannelAndRelayer() error {
 
 	fmt.Printf("Starting ibc connection between chains...\n")
 	// add new channel to relayer config
-	setupIbcPathCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", generatedPath("relayer"), "/home/relayer/.relayer"), "--network", "generated_default", relayerImageTag, "rly", "paths", "new", kavaChainId, ibcChainId, "transfer")
+	setupIbcPathCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", generatedPath("relayer"), "/home/relayer/.relayer"), "--network", "generated_default", relayerImageTag, "rly", "paths", "new", nemoChainId, ibcChainId, "transfer")
 	setupIbcPathCmd.Stdout = os.Stdout
 	setupIbcPathCmd.Stderr = os.Stderr
 	if err := setupIbcPathCmd.Run(); err != nil {
 		fmt.Println(err.Error())
 		return fmt.Errorf("[relayer] failed to setup ibc path")
 	}
-	// open the channel between kava and ibcnode
+	// open the channel between nemo and ibcnode
 	openConnectionCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", generatedPath("relayer"), "/home/relayer/.relayer"), "--network", "generated_default", relayerImageTag, "rly", "transact", "link", "transfer")
 	openConnectionCmd.Stdout = os.Stdout
 	openConnectionCmd.Stderr = os.Stderr
@@ -238,16 +238,16 @@ func runChainUpgrade() error {
 
 	// submit upgrade proposal via God Committee (committee 3)
 	fmt.Println("submitting upgrade proposal")
-	cmd := fmt.Sprintf("tx committee submit-proposal 3 %s --gas auto --gas-adjustment 1.2 --gas-prices 0.05ukava --from committee -y",
+	cmd := fmt.Sprintf("tx committee submit-proposal 3 %s --gas auto --gas-adjustment 1.2 --gas-prices 0.05ufury --from committee -y",
 		upgradeJson,
 	)
-	if err := runKavaCli(strings.Split(cmd, " ")...); err != nil {
+	if err := runNemoCli(strings.Split(cmd, " ")...); err != nil {
 		return err
 	}
 
 	// vote on the committee proposal
-	cmd = "tx committee vote 1 yes --from committee --gas auto --gas-adjustment 1.2 --gas-prices 0.01ukava -y"
-	if err := runKavaCli(strings.Split(cmd, " ")...); err != nil {
+	cmd = "tx committee vote 1 yes --from committee --gas auto --gas-adjustment 1.2 --gas-prices 0.01ufury -y"
+	if err := runNemoCli(strings.Split(cmd, " ")...); err != nil {
 		return err
 	}
 
@@ -258,26 +258,26 @@ func runChainUpgrade() error {
 	fmt.Printf("chain has reached upgrade height (%d) and halted!\n", chainUpgradeHeight)
 
 	fmt.Println("restarting chain with upgraded image")
-	// this runs with the desired image because KAVA_TAG will be correctly set, or if that is unset,
+	// this runs with the desired image because NEMO_TAG will be correctly set, or if that is unset,
 	// the docker-compose files supporting upgrades default to the desired template version.
-	if err := dockerComposeCmd("up", "--force-recreate", "-d", "kavanode").Run(); err != nil {
+	if err := dockerComposeCmd("up", "--force-recreate", "-d", "nemonode").Run(); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-// writeUpgradeProposal writes a proposal json to a file in the kavanode container and returns the path
+// writeUpgradeProposal writes a proposal json to a file in the nemonode container and returns the path
 func writeUpgradeProposal() (string, error) {
 	content := fmt.Sprintf(`{
 		"@type": "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal",
 		"title": "Automated Chain Upgrade",
-		"description": "An auto-magical chain upgrade performed by kvtool.",
+		"description": "An auto-magical chain upgrade performed by nmtool.",
 		"plan": { "name": "%s", "height": "%d" }
 	}`, chainUpgradeName, chainUpgradeHeight)
 	// write the file to a location inside the container
-	return "/root/.kava/config/upgrade-proposal.json", os.WriteFile(
-		generatedPath("kava", "initstate", ".kava", "config", "upgrade-proposal.json"),
+	return "/root/.nemo/config/upgrade-proposal.json", os.WriteFile(
+		generatedPath("nemo", "initstate", ".nemo", "config", "upgrade-proposal.json"),
 		[]byte(content),
 		0644,
 	)
@@ -290,13 +290,13 @@ func waitForBlock(n int64, timeout time.Duration) error {
 	return backoff.Retry(blockGTE(n), b)
 }
 
-// blockGTE is a backoff operation that uses kava's CLI to query the chain for the current block number
+// blockGTE is a backoff operation that uses nemo's CLI to query the chain for the current block number
 // the operation fails in the following cases:
 // 1. the chain cannot be reached, 2. result cannot be parsed, 3. current height is less than desired height `n`
 func blockGTE(n int64) backoff.Operation {
 	return func() error {
-		cmd := "kava status | jq -r .sync_info.latest_block_height"
-		out, err := exec.Command("docker-compose", "-f", generatedPath("docker-compose.yaml"), "exec", "-T", "kavanode", "bash", "-c", cmd).Output()
+		cmd := "nemo status | jq -r .sync_info.latest_block_height"
+		out, err := exec.Command("docker-compose", "-f", generatedPath("docker-compose.yaml"), "exec", "-T", "nemonode", "bash", "-c", cmd).Output()
 		if err != nil {
 			return err
 		}
@@ -312,13 +312,13 @@ func blockGTE(n int64) backoff.Operation {
 	}
 }
 
-// runKavaCli execs into the kava container and runs `kava args...`
-func runKavaCli(args ...string) error {
+// runNemoCli execs into the nemo container and runs `nemo args...`
+func runNemoCli(args ...string) error {
 	pieces := make([]string, 4, len(args)+4)
 	pieces[0] = "exec"
 	pieces[1] = "-T"
-	pieces[2] = "kavanode"
-	pieces[3] = "kava"
+	pieces[2] = "nemonode"
+	pieces[3] = "nemo"
 	pieces = append(pieces, args...)
 	return dockerComposeCmd(pieces...).Run()
 }

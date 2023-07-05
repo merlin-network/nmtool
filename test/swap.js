@@ -1,10 +1,10 @@
-const Kava = require('@kava-labs/javascript-sdk');
+const Nemo = require('@kava-labs/javascript-sdk');
 const { sleep } = require("./helpers.js");
 
-const incomingSwap = async (kavaClient, bnbClient, assets, denom, amount) => {
+const incomingSwap = async (nemoClient, bnbClient, assets, denom, amount) => {
   const assetInfo = assets[denom];
   if(!assetInfo) {
-      throw new Error(denom + " is not supported by kvtool BEP3");
+      throw new Error(denom + " is not supported by nmtool BEP3");
   }
 
   // Assets involved in the swap
@@ -13,8 +13,8 @@ const incomingSwap = async (kavaClient, bnbClient, assets, denom, amount) => {
   // Addresses involved in the swap
   const sender = bnbClient.getClientKeyAddress();
   const recipient = assetInfo.binanceChainDeputyHotWallet; // deputy's address on Binance Chain
-  const senderOtherChain = assetInfo.kavaDeputyHotWallet; // deputy's address on Kava
-  const recipientOtherChain = kavaClient.wallet.address;
+  const senderOtherChain = assetInfo.nemoDeputyHotWallet; // deputy's address on Nemo
+  const recipientOtherChain = nemoClient.wallet.address;
 
   // Format asset/amount parameters as tokens, expectedIncome
   const tokens = [
@@ -29,9 +29,9 @@ const incomingSwap = async (kavaClient, bnbClient, assets, denom, amount) => {
   const heightSpan = 10001;
 
   // Generate random number hash from timestamp and hex-encoded random number
-  let randomNumber = Kava.utils.generateRandomNumber();
+  let randomNumber = Nemo.utils.generateRandomNumber();
   const timestamp = Math.floor(Date.now() / 1000);
-  const randomNumberHash = Kava.utils.calculateRandomNumberHash(
+  const randomNumberHash = Nemo.utils.calculateRandomNumberHash(
     randomNumber,
     timestamp
   );
@@ -61,55 +61,55 @@ const incomingSwap = async (kavaClient, bnbClient, assets, denom, amount) => {
     console.log('Tx error:', res);
     return;
   }
-  // Wait for deputy to see the new swap on Binance Chain and relay it to Kava
+  // Wait for deputy to see the new swap on Binance Chain and relay it to Nemo
   console.log('Waiting for deputy to witness and relay the swap...');
-  console.log('Expected Kava swap ID:', swapIDs.dest);
+  console.log('Expected Nemo swap ID:', swapIDs.dest);
 
   await sleep(45000); // 45 seconds
-  await kavaClient.getSwap(swapIDs.dest);
+  await nemoClient.getSwap(swapIDs.dest);
 
-  // Send claim swap tx using Kava client
-  const txHashClaim = await kavaClient.claimSwap(
+  // Send claim swap tx using Nemo client
+  const txHashClaim = await nemoClient.claimSwap(
     swapIDs.dest,
     randomNumber
   );
-  console.log('Claim swap tx hash (Kava): '.concat(txHashClaim));
+  console.log('Claim swap tx hash (Nemo): '.concat(txHashClaim));
 
   // Check the claim tx hash
-  const txRes = await kavaClient.checkTxHash(txHashClaim, 15000);
+  const txRes = await nemoClient.checkTxHash(txHashClaim, 15000);
   console.log('\nTx result:', txRes.raw_log);
 };
 
-const outgoingSwap = async(kavaClient, bnbClient, assets, denom, amount) => {
+const outgoingSwap = async(nemoClient, bnbClient, assets, denom, amount) => {
   const assetInfo = assets[denom];
   if(!assetInfo) {
-    throw new Error(denom + " is not supported by kvtool BEP3");
+    throw new Error(denom + " is not supported by nmtool BEP3");
   }
 
-  const sender = kavaClient.wallet.address;
-  const recipient = assetInfo.kavaDeputyHotWallet; // deputy's address on kava
+  const sender = nemoClient.wallet.address;
+  const recipient = assetInfo.nemoDeputyHotWallet; // deputy's address on nemo
   const senderOtherChain = assetInfo.binanceChainDeputyHotWallet; // deputy's address on bnbchain
   const recipientOtherChain = bnbClient.getClientKeyAddress();
 
   // Set up params
-  const asset = assetInfo.kavaDenom;
+  const asset = assetInfo.nemoDenom;
 
-  const coins = Kava.utils.formatCoins(amount, asset);
+  const coins = Nemo.utils.formatCoins(amount, asset);
   const heightSpan = "250";
 
   // Generate random number hash from timestamp and hex-encoded random number
-  const randomNumber = Kava.utils.generateRandomNumber();
+  const randomNumber = Nemo.utils.generateRandomNumber();
   const timestamp = Math.floor(Date.now() / 1000);
-  const randomNumberHash = Kava.utils.calculateRandomNumberHash(
+  const randomNumberHash = Nemo.utils.calculateRandomNumberHash(
     randomNumber,
     timestamp
   );
   console.log("\nSecret random number:", randomNumber.toUpperCase());
 
   const swapIDs = calcSwapIDs(randomNumberHash, sender, senderOtherChain);
-  console.log('Expected Kava swap ID:', swapIDs.origin);
+  console.log('Expected Nemo swap ID:', swapIDs.origin);
 
-  const txHash = await kavaClient.createSwap(
+  const txHash = await nemoClient.createSwap(
     recipient,
     recipientOtherChain,
     senderOtherChain,
@@ -119,9 +119,9 @@ const outgoingSwap = async(kavaClient, bnbClient, assets, denom, amount) => {
     heightSpan
   );
 
-  console.log("\nTx hash (Create swap on Kava):", txHash);
+  console.log("\nTx hash (Create swap on Nemo):", txHash);
 
-  // Wait for deputy to see the new swap on Kava and relay it to Binance Chain
+  // Wait for deputy to see the new swap on Nemo and relay it to Binance Chain
   console.log("Waiting for deputy to witness and relay the swap...")
   console.log('Expected Binance Chain swap ID:', swapIDs.dest);
   await sleep(45000); // 45 seconds
@@ -143,14 +143,14 @@ const outgoingSwap = async(kavaClient, bnbClient, assets, denom, amount) => {
 // Print swap IDs
 var calcSwapIDs = (randomNumberHash, sender, senderOtherChain) => {
   // Calculate the expected swap ID on origin chain
-  const originChainSwapID = Kava.utils.calculateSwapID(
+  const originChainSwapID = Nemo.utils.calculateSwapID(
     randomNumberHash,
     sender,
     senderOtherChain
   );
 
   // Calculate the expected swap ID on destination chain
-  const destChainSwapID = Kava.utils.calculateSwapID(
+  const destChainSwapID = Nemo.utils.calculateSwapID(
     randomNumberHash,
     senderOtherChain,
     sender

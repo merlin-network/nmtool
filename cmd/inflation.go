@@ -6,7 +6,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/kava-labs/kvtool/kavaclient"
+	"github.com/fanfury-sports/nmtool/nemoclient"
 )
 
 func InflationRootCmd() *cobra.Command {
@@ -15,7 +15,7 @@ func InflationRootCmd() *cobra.Command {
 		Short: "Various utilities for checking realized inflation",
 	}
 
-	cmd.PersistentFlags().StringVar(&kavaGrpcUrl, "node", "https://grpc.data.kava.io:443", "kava GRPC url to run queries against")
+	cmd.PersistentFlags().StringVar(&nemoGrpcUrl, "node", "https://grpc.data.nemo.io:443", "nemo GRPC url to run queries against")
 
 	cmd.AddCommand(AverageInflation())
 
@@ -31,24 +31,24 @@ The amount minted is converted into an average APR (pre second period) & extrapo
 End height is optional, defaults to latest block. If start height is negative, it will subtract from end.`,
 		Args: cobra.MatchAll(cobra.MinimumNArgs(1), cobra.MaximumNArgs(2)),
 		Example: `calculate inflation over a block range:
-$ kvtool inflation avg 2000000 2500000
+$ nmtool inflation avg 2000000 2500000
 
 calculate inflation from block 2M to present:
-$ kvtool inflation avg 2000000
+$ nmtool inflation avg 2000000
 
 calculate inflation from last 10 blocks ("--" is necessary to interpret as an argument):
-$ kvtool inflation avg -- -10
+$ nmtool inflation avg -- -10
 
 calculate inflation over the 1000 blocks before height 3000000:
-$ kvtool inflation avg -- -1000 3000000
+$ nmtool inflation avg -- -1000 3000000
 `,
 		RunE: func(_ *cobra.Command, args []string) error {
 			var end int64
 			var err error
-			fmt.Printf("using endpoint %s\n", kavaGrpcUrl)
-			k, err := kavaclient.NewClient(kavaGrpcUrl)
+			fmt.Printf("using endpoint %s\n", nemoGrpcUrl)
+			k, err := nemoclient.NewClient(nemoGrpcUrl)
 			if err != nil {
-				panic(fmt.Sprintf("failed to create kava grpc client: %s", err))
+				panic(fmt.Sprintf("failed to create nemo grpc client: %s", err))
 			}
 
 			// default to latest block if no end provided

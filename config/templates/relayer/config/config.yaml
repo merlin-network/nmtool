@@ -8,9 +8,9 @@ chains:
     type: cosmos
     value:
       key: testkey
-      chain-id: kavalocalnet_8889-2
+      chain-id: highbury_710-2
       rpc-addr: http://ibcnode:26657
-      account-prefix: kava
+      account-prefix: nemo
       keyring-backend: test
       gas-adjustment: 1.2
       gas-prices: 0.01uatom
@@ -20,16 +20,16 @@ chains:
       output-format: json
       sign-mode: direct
       extra-codecs: []
-  kava:
+  nemo:
     type: cosmos
     value:
       key: testkey
-      chain-id: kavalocalnet_8888-1
-      rpc-addr: http://kavanode:26657
-      account-prefix: kava
+      chain-id: highbury_710-1
+      rpc-addr: http://nemonode:26657
+      account-prefix: nemo
       keyring-backend: test
       gas-adjustment: 1.2
-      gas-prices: 0.01ukava
+      gas-prices: 0.01ufury
       min-gas-amount: 0
       debug: false
       timeout: 20s

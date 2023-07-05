@@ -39,8 +39,8 @@ type DelegationDistribution struct {
 // between min and max amounts
 type SpamParams struct {
 	Count     int    `json:"count"`      // number of delegations (and accounts)
-	MinAmount string `json:"min_amount"` // min ukava amount
-	MaxAmount string `json:"max_amount"` // max ukava amount
+	MinAmount string `json:"min_amount"` // min ufury amount
+	MaxAmount string `json:"max_amount"` // max ufury amount
 
 	min *big.Int
 	max *big.Int
@@ -159,7 +159,7 @@ func ReadAllocationsInput(cfg Config) Allocations {
 
 	// absence of distributions falls back to default - DefaultBaseAmount delegated to all validators
 	if allocations.SpamDelegations == nil && len(allocations.Delegations) == 0 {
-		log.Printf("no delegations specified. defaulting to equal distribution of %s ukava\n", cfg.DefaultBaseAmount)
+		log.Printf("no delegations specified. defaulting to equal distribution of %s ufury\n", cfg.DefaultBaseAmount)
 		allocations.Delegations = []*DelegationDistribution{
 			DefaultDistribution(cfg.DefaultBaseAmount),
 		}

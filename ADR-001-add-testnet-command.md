@@ -4,10 +4,10 @@
 
 We want a tool that can set up testnets of our various services in several different configurations. For example:
 
-- a kvd node, bnbchain node (with rest servers), and the deputy for integration testing the web app
-- a bare kvd node built from unmerged branches for helping with PR reviews
-- a local kvd node with genesis that closely mirrors mainnet to test out upcoming gov proposals
-- a kvd node and oracle to test out CDP top up bot
+- a nmd node, bnbchain node (with rest servers), and the deputy for integration testing the web app
+- a bare nmd node built from unmerged branches for helping with PR reviews
+- a local nmd node with genesis that closely mirrors mainnet to test out upcoming gov proposals
+- a nmd node and oracle to test out CDP top up bot
 - etc
 
 ## Proposal
@@ -25,8 +25,8 @@ Create go packages and/or cli tools only to generate a set of config files for d
 	- example:
 	```
 		generated_config/
-		|- kava/
-			|- .kvd/
+		|- nemo/
+			|- .nmd/
 				|- config.toml
 				|- genesis.json
 		|- binance/
@@ -51,14 +51,14 @@ Create go packages and/or cli tools only to generate a set of config files for d
 ### Disadvantages
 
 - requires working knowledge of docker / docker-compose
-- services need to be packaged into docker containers (although for the web app, it could run outside docker while interacting with kava/bnb rest servers running in docker)
+- services need to be packaged into docker containers (although for the web app, it could run outside docker while interacting with nemo/bnb rest servers running in docker)
 - there might be need to send in txs after a testnet launches to create CDPs, auctions, etc. There is not obvious place for this type of configuration to live in this framework
 
 ### Generating Config
 
 I think the value of this tool comes from assembling configurations for different services that work together.
 
-Currently there are a load of manually created files in `config_templates` which are copied and lightly edited when `kvtool testnet` runs. This works for now but in the future moving all of the data into go packages will be more scalable.
+Currently there are a load of manually created files in `config_templates` which are copied and lightly edited when `nmtool testnet` runs. This works for now but in the future moving all of the data into go packages will be more scalable.
 
 ## Resources
 

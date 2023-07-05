@@ -1,6 +1,6 @@
 [
   {
-    "msg_type_url": "/kava.evmutil.v1beta1.MsgConvertERC20ToCoin",
+    "msg_type_url": "/nemo.evmutil.v1beta1.MsgConvertERC20ToCoin",
     "msg_value_type_name": "MsgValueEVMConvertERC20ToCoin",
     "value_types": [
       {
@@ -12,7 +12,7 @@
         "type": "string"
       },
       {
-        "name": "kava_erc20_address",
+        "name": "nemo_erc20_address",
         "type": "string"
       },
       {
@@ -23,7 +23,7 @@
     "nested_types": []
   },
   {
-    "msg_type_url": "/kava.evmutil.v1beta1.MsgConvertCoinToERC20",
+    "msg_type_url": "/nemo.evmutil.v1beta1.MsgConvertCoinToERC20",
     "msg_value_type_name": "MsgValueEVMConvertCoinToERC20",
     "value_types": [
       {
@@ -42,7 +42,7 @@
     "nested_types": []
   },
   {
-    "msg_type_url": "/kava.earn.v1beta1.MsgDeposit",
+    "msg_type_url": "/nemo.earn.v1beta1.MsgDeposit",
     "msg_value_type_name": "MsgValueEarnDeposit",
     "value_types": [
       {
@@ -61,7 +61,7 @@
     "nested_types": []
   },
   {
-    "msg_type_url": "/kava.earn.v1beta1.MsgWithdraw",
+    "msg_type_url": "/nemo.earn.v1beta1.MsgWithdraw",
     "msg_value_type_name": "MsgValueEarnWithdraw",
     "value_types": [
       {
@@ -141,7 +141,7 @@
     "nested_types": []
   },
   {
-    "msg_type_url": "/kava.incentive.v1beta1.MsgClaimUSDXMintingReward",
+    "msg_type_url": "/nemo.incentive.v1beta1.MsgClaimUSDXMintingReward",
     "msg_value_type_name": "MsgValueIncentiveClaimUSDXMintingReward",
     "value_types": [
       {
@@ -156,7 +156,7 @@
     "nested_types": []
   },
   {
-    "msg_type_url": "/kava.incentive.v1beta1.MsgClaimHardReward",
+    "msg_type_url": "/nemo.incentive.v1beta1.MsgClaimHardReward",
     "msg_value_type_name": "MsgValueIncentiveClaimHardReward",
     "value_types": [
       {
@@ -185,7 +185,7 @@
     ]
   },
   {
-    "msg_type_url": "/kava.incentive.v1beta1.MsgClaimDelegatorReward",
+    "msg_type_url": "/nemo.incentive.v1beta1.MsgClaimDelegatorReward",
     "msg_value_type_name": "MsgValueIncentiveClaimDelegatorReward",
     "value_types": [
       {
@@ -214,7 +214,7 @@
     ]
   },
   {
-    "msg_type_url": "/kava.incentive.v1beta1.MsgClaimSwapReward",
+    "msg_type_url": "/nemo.incentive.v1beta1.MsgClaimSwapReward",
     "msg_value_type_name": "MsgValueIncentiveClaimSwapReward",
     "value_types": [
       {
@@ -243,7 +243,7 @@
     ]
   },
   {
-    "msg_type_url": "/kava.incentive.v1beta1.MsgClaimSavingsReward",
+    "msg_type_url": "/nemo.incentive.v1beta1.MsgClaimSavingsReward",
     "msg_value_type_name": "MsgValueIncentiveClaimSavingsReward",
     "value_types": [
       {
@@ -272,7 +272,7 @@
     ]
   },
   {
-    "msg_type_url": "/kava.incentive.v1beta1.MsgClaimEarnReward",
+    "msg_type_url": "/nemo.incentive.v1beta1.MsgClaimEarnReward",
     "msg_value_type_name": "MsgValueIncentiveClaimEarnReward",
     "value_types": [
       {
@@ -301,7 +301,7 @@
     ]
   },
   {
-    "msg_type_url": "/kava.router.v1beta1.MsgMintDeposit",
+    "msg_type_url": "/nemo.router.v1beta1.MsgMintDeposit",
     "msg_value_type_name": "MsgValueRouterMintDeposit",
     "value_types": [
       {
@@ -320,7 +320,7 @@
     "nested_types": []
   },
   {
-    "msg_type_url": "/kava.router.v1beta1.MsgDelegateMintDeposit",
+    "msg_type_url": "/nemo.router.v1beta1.MsgDelegateMintDeposit",
     "msg_value_type_name": "MsgValueRouterDelegateMintDeposit",
     "value_types": [
       {
@@ -339,7 +339,7 @@
     "nested_types": []
   },
   {
-    "msg_type_url": "/kava.router.v1beta1.MsgWithdrawBurn",
+    "msg_type_url": "/nemo.router.v1beta1.MsgWithdrawBurn",
     "msg_value_type_name": "MsgValueRouterWithdrawBurn",
     "value_types": [
       {
@@ -358,7 +358,7 @@
     "nested_types": []
   },
   {
-    "msg_type_url": "/kava.router.v1beta1.MsgWithdrawBurnUndelegate",
+    "msg_type_url": "/nemo.router.v1beta1.MsgWithdrawBurnUndelegate",
     "msg_value_type_name": "MsgValueRouterWithdrawBurnUndelegate",
     "value_types": [
       {
@@ -415,7 +415,7 @@
     "nested_types": []
   },
   {
-    "msg_type_url": "/kava.liquid.v1beta1.MsgMintDerivative",
+    "msg_type_url": "/nemo.liquid.v1beta1.MsgMintDerivative",
     "msg_value_type_name": "MsgValueMintDerivative",
     "value_types": [
       {
@@ -434,7 +434,7 @@
     "nested_types": []
   },
   {
-    "msg_type_url": "/kava.liquid.v1beta1.MsgBurnDerivative",
+    "msg_type_url": "/nemo.liquid.v1beta1.MsgBurnDerivative",
     "msg_value_type_name": "MsgValueBurnDerivative",
     "value_types": [
       {
@@ -453,7 +453,7 @@
     "nested_types": []
   },
   {
-    "msg_type_url": "/kava.hard.v1beta1.MsgWithdraw",
+    "msg_type_url": "/nemo.hard.v1beta1.MsgWithdraw",
     "msg_value_type_name": "MsgValueHardWithdraw",
     "value_types": [
       {
@@ -468,7 +468,7 @@
     "nested_types": []
   },
   {
-    "msg_type_url": "/kava.hard.v1beta1.MsgDeposit",
+    "msg_type_url": "/nemo.hard.v1beta1.MsgDeposit",
     "msg_value_type_name": "MsgValueHardDeposit",
     "value_types": [
       {
@@ -483,7 +483,7 @@
     "nested_types": []
   },
   {
-    "msg_type_url": "/kava.evmutil.v1beta1.MsgConvertCosmosCoinToERC20",
+    "msg_type_url": "/nemo.evmutil.v1beta1.MsgConvertCosmosCoinToERC20",
     "msg_value_type_name": "MsgConvertCosmosCoinToERC20",
     "value_types": [
       {
@@ -502,7 +502,7 @@
     "nested_types": []
   },
   {
-    "msg_type_url": "/kava.evmutil.v1beta1.MsgConvertCosmosCoinFromERC20",
+    "msg_type_url": "/nemo.evmutil.v1beta1.MsgConvertCosmosCoinFromERC20",
     "msg_value_type_name": "MsgConvertCosmosCoinFromERC20",
     "value_types": [
       {

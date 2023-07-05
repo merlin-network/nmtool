@@ -1,9 +1,9 @@
 version: '3'
 services:
-  kava-1:
-    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+  nemo-1:
+    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
     ports:
-      # open default kava rpc port
+      # open default nemo rpc port
       - "26657:26657"
       # open rest port
       - "1317:1317"
@@ -16,117 +16,117 @@ services:
       # open Eth websocket port
       - "8546:8546"
     volumes:
-      - "./kava-1:/root/.kava"
+      - "./nemo-1:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
-  kava-2:
-    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+      - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
+  nemo-2:
+    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
     volumes:
-      - "./kava-2:/root/.kava"
+      - "./nemo-2:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
-  kava-3:
-    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+      - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
+  nemo-3:
+    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
     volumes:
-      - "./kava-3:/root/.kava"
+      - "./nemo-3:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
-  kava-4:
-    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+      - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
+  nemo-4:
+    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
     volumes:
-      - "./kava-4:/root/.kava"
+      - "./nemo-4:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
-  kava-5:
-    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+      - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
+  nemo-5:
+    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
     volumes:
-      - "./kava-5:/root/.kava"
+      - "./nemo-5:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
-  kava-6:
-    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+      - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
+  nemo-6:
+    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
     volumes:
-      - "./kava-6:/root/.kava"
+      - "./nemo-6:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
-  kava-7:
-    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+      - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
+  nemo-7:
+    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
     volumes:
-      - "./kava-7:/root/.kava"
+      - "./nemo-7:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
-  kava-8:
-    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+      - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
+  nemo-8:
+    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
     volumes:
-      - "./kava-8:/root/.kava"
+      - "./nemo-8:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
-  kava-9:
-    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+      - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
+  nemo-9:
+    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
     volumes:
-      - "./kava-9:/root/.kava"
+      - "./nemo-9:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
-  kava-10:
-    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+      - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
+  nemo-10:
+    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
     volumes:
-      - "./kava-10:/root/.kava"
+      - "./nemo-10:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
-  kava-11:
-    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+      - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
+  nemo-11:
+    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
     volumes:
-      - "./kava-11:/root/.kava"
+      - "./nemo-11:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
-  kava-12:
-    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+      - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
+  nemo-12:
+    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
     volumes:
-      - "./kava-12:/root/.kava"
+      - "./nemo-12:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
-  kava-13:
-    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+      - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
+  nemo-13:
+    image: "nemo/nemo:${NEMO_IMAGE_TAG:-master}"
     volumes:
-      - "./kava-13:/root/.kava"
+      - "./nemo-13:/root/.nemo"
     # start the blockchain, and set rpc to listen to connections from outside the container
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
+      - "/root/.nemo/config/init-data-directory.sh && nemo start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"

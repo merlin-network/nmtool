@@ -1,11 +1,11 @@
-module github.com/kava-labs/kvtool/contrib/issue-stake-liquify
+module github.com/fanfury-sports/nmtool/contrib/issue-stake-liquify
 
 go 1.17
 
 require (
 	github.com/cosmos/cosmos-sdk v0.45.4
 	github.com/kava-labs/go-tools v0.0.0-20221005173922-f83a05d33945
-	github.com/kava-labs/kava v0.17.2-0.20221003233729-4c879bc4fbb7
+	github.com/incubus-network/nemo v0.17.2-0.20221003233729-4c879bc4fbb7
 	github.com/tendermint/tendermint v0.34.21
 )
 
@@ -153,15 +153,15 @@ replace (
 	// Use the cosmos keyring code
 	github.com/99designs/keyring => github.com/cosmos/keyring v1.1.7-0.20210622111912-ef00f8ac3d76
 	// Use cosmos-sdk fork with backported fix for unsafe-reset-all
-	github.com/cosmos/cosmos-sdk => github.com/kava-labs/cosmos-sdk v0.45.4-kava.4
+	github.com/cosmos/cosmos-sdk => github.com/kava-labs/cosmos-sdk v0.45.4-nemo.4
 	// See https://github.com/cosmos/cosmos-sdk/pull/10401, https://github.com/cosmos/cosmos-sdk/commit/0592ba6158cd0bf49d894be1cef4faeec59e8320
 	github.com/gin-gonic/gin => github.com/gin-gonic/gin v1.7.0
 	// Use the cosmos modified protobufs
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 	// Use rocksdb 7.1.2
-	github.com/tendermint/tm-db => github.com/kava-labs/tm-db v0.6.7-kava.1
+	github.com/tendermint/tm-db => github.com/kava-labs/tm-db v0.6.7-nemo.1
 	// Use ethermint fork that respects min-gas-price with NoBaseFee true and london enabled
-	github.com/tharsis/ethermint => github.com/Kava-Labs/ethermint v0.14.0-kava-v17.5
+	github.com/tharsis/ethermint => github.com/Nemo-Labs/ethermint v0.14.0-nemo-v17.5
 	// Make sure that we use grpc compatible with cosmos
 	google.golang.org/grpc => google.golang.org/grpc v1.33.2
 )

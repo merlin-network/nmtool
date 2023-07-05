@@ -13,7 +13,7 @@ import (
 func ExportCmd() *cobra.Command {
 	exportCmd := &cobra.Command{
 		Use:     "export",
-		Short:   "Pauses the current kava testnet, exports the current kava testnet state to a JSON file, then restarts the testnet.",
+		Short:   "Pauses the current nemo testnet, exports the current nemo testnet state to a JSON file, then restarts the testnet.",
 		Example: "export",
 		Args:    cobra.NoArgs,
 		RunE: func(_ *cobra.Command, _ []string) error {
@@ -26,8 +26,8 @@ func ExportCmd() *cobra.Command {
 				return err
 			}
 			// docker ps -aqf "name=containername"
-			kavaContainerIDCmd := exec.Command("docker", "ps", "-aqf", "name=generated_kavanode_1")
-			kavaContainer, err := kavaContainerIDCmd.Output()
+			nemoContainerIDCmd := exec.Command("docker", "ps", "-aqf", "name=generated_nemonode_1")
+			nemoContainer, err := nemoContainerIDCmd.Output()
 			if err != nil {
 				return err
 			}
@@ -38,9 +38,9 @@ func ExportCmd() *cobra.Command {
 				return err
 			}
 
-			makeNewKavaImageCmd := exec.Command("docker", "commit", strings.TrimSpace(string(kavaContainer)), "kava-export-temp")
+			makeNewNemoImageCmd := exec.Command("docker", "commit", strings.TrimSpace(string(nemoContainer)), "nemo-export-temp")
 
-			kavaImageOutput, err := makeNewKavaImageCmd.Output()
+			nemoImageOutput, err := makeNewNemoImageCmd.Output()
 			if err != nil {
 				return err
 			}
@@ -51,35 +51,35 @@ func ExportCmd() *cobra.Command {
 				return err
 			}
 
-			localKavaMountPath := generatedPath("kava", "initstate", ".kava", "config")
-			localIbcMountPath := generatedPath("ibcchain", "initstate", ".kava", "config")
+			localNemoMountPath := generatedPath("nemo", "initstate", ".nemo", "config")
+			localIbcMountPath := generatedPath("ibcchain", "initstate", ".nemo", "config")
 
-			kavaExportCmd := exec.Command(
+			nemoExportCmd := exec.Command(
 				"docker", "run",
-				"-v", strings.TrimSpace(fmt.Sprintf("%s:/root/.kava/config", localKavaMountPath)),
-				"kava-export-temp",
-				"kava", "export")
-			kavaExportJSON, err := kavaExportCmd.Output()
+				"-v", strings.TrimSpace(fmt.Sprintf("%s:/root/.nemo/config", localNemoMountPath)),
+				"nemo-export-temp",
+				"nemo", "export")
+			nemoExportJSON, err := nemoExportCmd.Output()
 			if err != nil {
 				return err
 			}
 
 			ibcExportCmd := exec.Command(
 				"docker", "run",
-				"-v", strings.TrimSpace(fmt.Sprintf("%s:/root/.kava/config", localIbcMountPath)),
+				"-v", strings.TrimSpace(fmt.Sprintf("%s:/root/.nemo/config", localIbcMountPath)),
 				"ibc-export-temp",
-				"kava", "export")
+				"nemo", "export")
 			ibcExportJSON, err := ibcExportCmd.Output()
 			if err != nil {
 				return err
 			}
 			ts := time.Now().Unix()
-			kavaFilename := fmt.Sprintf("kava-export-%d.json", ts)
+			nemoFilename := fmt.Sprintf("nemo-export-%d.json", ts)
 			ibcFilename := fmt.Sprintf("ibc-export-%d.json", ts)
 
-			fmt.Printf("Created exports %s and %s\nCleaning up...", kavaFilename, ibcFilename)
+			fmt.Printf("Created exports %s and %s\nCleaning up...", nemoFilename, ibcFilename)
 
-			err = os.WriteFile(kavaFilename, kavaExportJSON, 0644)
+			err = os.WriteFile(nemoFilename, nemoExportJSON, 0644)
 			if err != nil {
 				return err
 			}
@@ -89,8 +89,8 @@ func ExportCmd() *cobra.Command {
 			}
 
 			// docker ps -aqf "name=containername"
-			tempKavaContainerIDCmd := exec.Command("docker", "ps", "-aqf", "ancestor=kava-export-temp")
-			tempKavaContainer, err := tempKavaContainerIDCmd.Output()
+			tempNemoContainerIDCmd := exec.Command("docker", "ps", "-aqf", "ancestor=nemo-export-temp")
+			tempNemoContainer, err := tempNemoContainerIDCmd.Output()
 			if err != nil {
 				return err
 			}
@@ -100,8 +100,8 @@ func ExportCmd() *cobra.Command {
 				return err
 			}
 
-			deleteKavaContainerCmd := exec.Command("docker", "rm", strings.TrimSpace(string(tempKavaContainer)))
-			err = deleteKavaContainerCmd.Run()
+			deleteNemoContainerCmd := exec.Command("docker", "rm", strings.TrimSpace(string(tempNemoContainer)))
+			err = deleteNemoContainerCmd.Run()
 			if err != nil {
 				return err
 			}
@@ -111,8 +111,8 @@ func ExportCmd() *cobra.Command {
 				return err
 			}
 
-			deleteKavaImageCmd := exec.Command("docker", "rmi", strings.TrimSpace(string(kavaImageOutput)))
-			err = deleteKavaImageCmd.Run()
+			deleteNemoImageCmd := exec.Command("docker", "rmi", strings.TrimSpace(string(nemoImageOutput)))
+			err = deleteNemoImageCmd.Run()
 			if err != nil {
 				return err
 			}

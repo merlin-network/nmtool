@@ -1,7 +1,7 @@
 {
   "params": {
     "allowed_pools": [
-      { "token_a": "ukava", "token_b": "usdx" },
+      { "token_a": "ufury", "token_b": "usdx" },
       { "token_a": "hard", "token_b": "usdx" },
       {
         "token_a": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
@@ -65,10 +65,10 @@
       "total_shares": "2236067977"
     },
     {
-      "pool_id": "ukava:usdx",
+      "pool_id": "ufury:usdx",
       "reserves_a": {
         "amount": "5000000000",
-        "denom": "ukava"
+        "denom": "ufury"
       },
       "reserves_b": {
         "amount": "1000000000",
@@ -95,7 +95,7 @@
     },
     {
       "depositor": "$whale",
-      "pool_id": "ukava:usdx",
+      "pool_id": "ufury:usdx",
       "shares_owned": "2236067977"
     }
   ]
