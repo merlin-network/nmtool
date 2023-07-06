@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/fanfury-sports/nmtool/contrib/update-genesis-validators/cmd"
-	"github.com/incubus-network/nemo/app"
+	"github.com/merlin-network/nemo/app"
 )
 
 func main() {

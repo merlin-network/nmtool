@@ -73,15 +73,15 @@
       },
       {
         "active": true,
-        "base_asset": "hard",
-        "market_id": "hard:usd",
+        "base_asset": "jinx",
+        "market_id": "jinx:usd",
         "oracles": ["$oracle"],
         "quote_asset": "usd"
       },
       {
         "active": true,
-        "base_asset": "hard",
-        "market_id": "hard:usd:30",
+        "base_asset": "jinx",
+        "market_id": "jinx:usd:30",
         "oracles": ["$oracle"],
         "quote_asset": "usd"
       },
@@ -321,13 +321,13 @@
     },
     {
       "expiry": "2023-07-20T00:00:00Z",
-      "market_id": "hard:usd",
+      "market_id": "jinx:usd",
       "oracle_address": "$oracle",
       "price": "0.500000000000000000"
     },
     {
       "expiry": "2023-07-20T00:00:00Z",
-      "market_id": "hard:usd:30",
+      "market_id": "jinx:usd:30",
       "oracle_address": "$oracle",
       "price": "0.500000000000000000"
     },

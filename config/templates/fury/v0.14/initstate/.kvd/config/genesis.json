@@ -24,7 +24,7 @@
                 "amount": "1000000000000"
               },
               {
-                "denom": "hard",
+                "denom": "jinx",
                 "amount": "1000000000000"
               }
             ],
@@ -50,7 +50,7 @@
             "public_key": null,
             "account_number": "0",
             "sequence": "0",
-            "name": "hard",
+            "name": "jinx",
             "permissions": [
               "minter",
               "burner"
@@ -234,7 +234,7 @@
               },
               {
                 "amount": "1000000000000000000",
-                "denom": "hard"
+                "denom": "jinx"
               },
               {
                 "amount": "10000000000000000",
@@ -559,16 +559,16 @@
               "amount": "2000000000000",
               "denom": "musd"
             },
-            "denom": "hard",
-            "liquidation_market_id": "hard:usd:30",
+            "denom": "jinx",
+            "liquidation_market_id": "jinx:usd:30",
             "liquidation_penalty": "0.050000000000000000",
             "liquidation_ratio": "1.500000000000000000",
             "keeper_reward_percentage": "0.01",
             "check_collateralization_index_count": "10",
             "prefix": 6,
-            "spot_market_id": "hard:usd",
+            "spot_market_id": "jinx:usd",
             "stability_fee": "1.000000000782997700",
-            "type": "hard-a"
+            "type": "jinx-a"
           }
         ],
         "debt_auction_lot": "10000000000",
@@ -962,7 +962,7 @@
         }
       ]
     },
-    "hard": {
+    "jinx": {
       "params": {
         "minimum_borrow_usd_value": "10.0",
         "money_markets": [
@@ -1123,12 +1123,12 @@
               "amount": "23809",
               "denom": "ufury"
             },
-            "collateral_type": "hard-a",
+            "collateral_type": "jinx-a",
             "start": "2020-10-16T14:00:00Z",
             "end": "2024-10-16T14:00:00Z"
           }
         ],
-        "hard_supply_reward_periods": [
+        "jinx_supply_reward_periods": [
           {
             "active": true,
             "collateral_type": "bnb",
@@ -1136,11 +1136,11 @@
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [{
               "amount": "123455",
-              "denom": "hard"
+              "denom": "jinx"
             }]
           }
         ],
-        "hard_borrow_reward_periods": [
+        "jinx_borrow_reward_periods": [
           {
             "active": true,
             "collateral_type": "bnb",
@@ -1148,11 +1148,11 @@
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [{
               "amount": "123455",
-              "denom": "hard"
+              "denom": "jinx"
             }]
           }
         ],
-        "hard_delegator_reward_periods": [
+        "jinx_delegator_reward_periods": [
           {
             "active": true,
             "collateral_type": "bnb",
@@ -1160,7 +1160,7 @@
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": {
               "amount": "123455",
-              "denom": "hard"
+              "denom": "jinx"
             }
           }
         ],
@@ -1178,10 +1178,10 @@
         ],
         "claim_end": "2025-01-01T00:00:00Z"
       },
-      "hard_supply_accumulation_times": [],
-      "hard_borrow_accumulation_times": [],
-      "hard_delegator_accumulation_times": [],
-      "hard_liquidity_provider_claims": [],
+      "jinx_supply_accumulation_times": [],
+      "jinx_borrow_accumulation_times": [],
+      "jinx_delegator_accumulation_times": [],
+      "jinx_liquidity_provider_claims": [],
       "musd_minting_claims": []
     },
     "issuance": {
@@ -1313,8 +1313,8 @@
           },
           {
             "active": true,
-            "base_asset": "hard",
-            "market_id": "hard:usd",
+            "base_asset": "jinx",
+            "market_id": "jinx:usd",
             "oracles": [
               "fury1acge4tcvhf3q6fh53fgwaa7vsq40wvx6zdfaun"
             ],
@@ -1322,8 +1322,8 @@
           },
           {
             "active": true,
-            "base_asset": "hard",
-            "market_id": "hard:usd:30",
+            "base_asset": "jinx",
+            "market_id": "jinx:usd:30",
             "oracles": [
               "fury1acge4tcvhf3q6fh53fgwaa7vsq40wvx6zdfaun"
             ],
@@ -1409,13 +1409,13 @@
         },
         {
           "expiry": "2021-07-20T00:00:00Z",
-          "market_id": "hard:usd",
+          "market_id": "jinx:usd",
           "oracle_address": "fury1acge4tcvhf3q6fh53fgwaa7vsq40wvx6zdfaun",
           "price": "0.500000000000000000"
         },
         {
           "expiry": "2021-07-20T00:00:00Z",
-          "market_id": "hard:usd:30",
+          "market_id": "jinx:usd:30",
           "oracle_address": "fury1acge4tcvhf3q6fh53fgwaa7vsq40wvx6zdfaun",
           "price": "0.500000000000000000"
         }

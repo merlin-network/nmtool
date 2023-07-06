@@ -392,7 +392,7 @@
         {
           "authorization": {
             "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
-            "msg": "/nemo.hard.v1beta1.MsgBorrow"
+            "msg": "/nemo.jinx.v1beta1.MsgBorrow"
           },
           "expiration": null,
           "grantee": "fury10d07y265gmmuvt4z0w9aw880jnsr700j2f629u",
@@ -401,7 +401,7 @@
         {
           "authorization": {
             "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
-            "msg": "/nemo.hard.v1beta1.MsgDeposit"
+            "msg": "/nemo.jinx.v1beta1.MsgDeposit"
           },
           "expiration": null,
           "grantee": "fury10d07y265gmmuvt4z0w9aw880jnsr700j2f629u",
@@ -410,7 +410,7 @@
         {
           "authorization": {
             "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
-            "msg": "/nemo.hard.v1beta1.MsgRepay"
+            "msg": "/nemo.jinx.v1beta1.MsgRepay"
           },
           "expiration": null,
           "grantee": "fury10d07y265gmmuvt4z0w9aw880jnsr700j2f629u",
@@ -419,7 +419,7 @@
         {
           "authorization": {
             "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
-            "msg": "/nemo.hard.v1beta1.MsgWithdraw"
+            "msg": "/nemo.jinx.v1beta1.MsgWithdraw"
           },
           "expiration": null,
           "grantee": "fury10d07y265gmmuvt4z0w9aw880jnsr700j2f629u",
@@ -507,7 +507,7 @@
               "amount": "10000000000000000"
             },
             {
-              "denom": "hard",
+              "denom": "jinx",
               "amount": "1000000000000000000"
             },
             {
@@ -615,7 +615,7 @@
               "amount": "10000000000000000"
             },
             {
-              "denom": "hard",
+              "denom": "jinx",
               "amount": "1000000000000000000"
             },
             {
@@ -707,7 +707,7 @@
           "address": "fury1cj7njkw2g9fqx4e768zc75dp9sks8u9zlc7m2x",
           "coins": [
             {
-              "denom": "hard",
+              "denom": "jinx",
               "amount": "1000000000000"
             },
             {
@@ -737,7 +737,7 @@
               "amount": "200000000"
             },
             {
-              "denom": "hard",
+              "denom": "jinx",
               "amount": "1000000000"
             },
             {
@@ -792,7 +792,7 @@
               "amount": "10000000000000000"
             },
             {
-              "denom": "hard",
+              "denom": "jinx",
               "amount": "1000000000000000000"
             },
             {
@@ -1082,15 +1082,15 @@
               "amount": "2000000000000",
               "denom": "musd"
             },
-            "denom": "hard",
-            "liquidation_market_id": "hard:usd:30",
+            "denom": "jinx",
+            "liquidation_market_id": "jinx:usd:30",
             "liquidation_penalty": "0.050000000000000000",
             "liquidation_ratio": "1.500000000000000000",
             "keeper_reward_percentage": "0.01",
             "check_collateralization_index_count": "10",
-            "spot_market_id": "hard:usd",
+            "spot_market_id": "jinx:usd",
             "stability_fee": "1.000000000782997700",
-            "type": "hard-a"
+            "type": "jinx-a"
           },
           {
             "auction_size": "50000000000",
@@ -1237,11 +1237,11 @@
                     "key": "Markets"
                   },
                   {
-                    "subspace": "hard",
+                    "subspace": "jinx",
                     "key": "MoneyMarkets"
                   },
                   {
-                    "subspace": "hard",
+                    "subspace": "jinx",
                     "key": "MinimumBorrowUSDValue"
                   }
                 ]
@@ -1292,7 +1292,7 @@
           "@type": "/nemo.committee.v1beta1.TokenCommittee",
           "base_committee": {
             "id": "4",
-            "description": "HARD Governance Committee",
+            "description": "JINX Governance Committee",
             "members": [
               "fury1r3emvfrc242jcfr9f9ygc34ztpp58xxukwu7gg"
             ],
@@ -1304,24 +1304,24 @@
                 "@type": "/nemo.committee.v1beta1.ParamsChangePermission",
                 "allowed_params_changes": [
                   {
-                    "subspace": "hard",
+                    "subspace": "jinx",
                     "key": "MoneyMarkets"
                   },
                   {
-                    "subspace": "hard",
+                    "subspace": "jinx",
                     "key": "MinimumBorrowUSDValue"
                   },
                   {
                     "subspace": "incentive",
-                    "key": "HardSupplyRewardPeriods"
+                    "key": "JinxSupplyRewardPeriods"
                   },
                   {
                     "subspace": "incentive",
-                    "key": "HardBorrowRewardPeriods"
+                    "key": "JinxBorrowRewardPeriods"
                   },
                   {
                     "subspace": "incentive",
-                    "key": "HardDelegatorRewardPeriods"
+                    "key": "JinxDelegatorRewardPeriods"
                   }
                 ]
               }
@@ -1331,7 +1331,7 @@
             "tally_option": "TALLY_OPTION_DEADLINE"
           },
           "quorum": "0.330000000000000000",
-          "tally_denom": "hard"
+          "tally_denom": "jinx"
         },
         {
           "@type": "/nemo.committee.v1beta1.TokenCommittee",
@@ -1410,7 +1410,7 @@
           {
             "denom": "musd",
             "strategies": [
-              "STRATEGY_TYPE_HARD"
+              "STRATEGY_TYPE_JINX"
             ]
           },
           {
@@ -1719,8 +1719,8 @@
             "nested_types": []
           },
           {
-            "msg_type_url": "/nemo.incentive.v1beta1.MsgClaimHardReward",
-            "msg_value_type_name": "MsgValueIncentiveClaimHardReward",
+            "msg_type_url": "/nemo.incentive.v1beta1.MsgClaimJinxReward",
+            "msg_value_type_name": "MsgValueIncentiveClaimJinxReward",
             "value_types": [
               {
                 "name": "sender",
@@ -2016,8 +2016,8 @@
             "nested_types": []
           },
           {
-            "msg_type_url": "/nemo.hard.v1beta1.MsgWithdraw",
-            "msg_value_type_name": "MsgValueHardWithdraw",
+            "msg_type_url": "/nemo.jinx.v1beta1.MsgWithdraw",
+            "msg_value_type_name": "MsgValueJinxWithdraw",
             "value_types": [
               {
                 "name": "depositor",
@@ -2031,8 +2031,8 @@
             "nested_types": []
           },
           {
-            "msg_type_url": "/nemo.hard.v1beta1.MsgDeposit",
-            "msg_value_type_name": "MsgValueHardDeposit",
+            "msg_type_url": "/nemo.jinx.v1beta1.MsgDeposit",
+            "msg_value_type_name": "MsgValueJinxDeposit",
             "value_types": [
               {
                 "name": "depositor",
@@ -2161,7 +2161,7 @@
         "veto_threshold": "0.334000000000000000"
       }
     },
-    "hard": {
+    "jinx": {
       "params": {
         "money_markets": [
           {
@@ -2438,12 +2438,12 @@
               "amount": "23809",
               "denom": "ufury"
             },
-            "collateral_type": "hard-a",
+            "collateral_type": "jinx-a",
             "start": "2021-12-08T14:00:00Z",
             "end": "2024-10-16T14:00:00Z"
           }
         ],
-        "hard_supply_reward_periods": [
+        "jinx_supply_reward_periods": [
           {
             "active": true,
             "collateral_type": "bnb",
@@ -2452,7 +2452,7 @@
             "rewards_per_second": [
               {
                 "amount": "123455",
-                "denom": "hard"
+                "denom": "jinx"
               }
             ]
           },
@@ -2464,7 +2464,7 @@
             "rewards_per_second": [
               {
                 "amount": "123455",
-                "denom": "hard"
+                "denom": "jinx"
               }
             ]
           },
@@ -2476,7 +2476,7 @@
             "rewards_per_second": [
               {
                 "amount": "123455",
-                "denom": "hard"
+                "denom": "jinx"
               }
             ]
           },
@@ -2488,7 +2488,7 @@
             "rewards_per_second": [
               {
                 "amount": "123455",
-                "denom": "hard"
+                "denom": "jinx"
               }
             ]
           },
@@ -2500,7 +2500,7 @@
             "rewards_per_second": [
               {
                 "amount": "123455",
-                "denom": "hard"
+                "denom": "jinx"
               }
             ]
           },
@@ -2512,7 +2512,7 @@
             "rewards_per_second": [
               {
                 "amount": "12355",
-                "denom": "hard"
+                "denom": "jinx"
               },
               {
                 "amount": "12355",
@@ -2528,7 +2528,7 @@
             "rewards_per_second": [
               {
                 "amount": "12355",
-                "denom": "hard"
+                "denom": "jinx"
               },
               {
                 "amount": "12355",
@@ -2544,7 +2544,7 @@
             "rewards_per_second": [
               {
                 "amount": "12355",
-                "denom": "hard"
+                "denom": "jinx"
               },
               {
                 "amount": "12355",
@@ -2560,7 +2560,7 @@
             "rewards_per_second": [
               {
                 "amount": "12355",
-                "denom": "hard"
+                "denom": "jinx"
               },
               {
                 "amount": "12355",
@@ -2576,24 +2576,24 @@
             "rewards_per_second": [
               {
                 "amount": "123455",
-                "denom": "hard"
+                "denom": "jinx"
               }
             ]
           },
           {
             "active": true,
-            "collateral_type": "hard",
+            "collateral_type": "jinx",
             "start": "2021-12-08T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
                 "amount": "123455",
-                "denom": "hard"
+                "denom": "jinx"
               }
             ]
           }
         ],
-        "hard_borrow_reward_periods": [
+        "jinx_borrow_reward_periods": [
           {
             "active": true,
             "collateral_type": "bnb",
@@ -2602,7 +2602,7 @@
             "rewards_per_second": [
               {
                 "amount": "12345",
-                "denom": "hard"
+                "denom": "jinx"
               }
             ]
           },
@@ -2614,7 +2614,7 @@
             "rewards_per_second": [
               {
                 "amount": "12345",
-                "denom": "hard"
+                "denom": "jinx"
               }
             ]
           },
@@ -2626,7 +2626,7 @@
             "rewards_per_second": [
               {
                 "amount": "12345",
-                "denom": "hard"
+                "denom": "jinx"
               }
             ]
           },
@@ -2638,7 +2638,7 @@
             "rewards_per_second": [
               {
                 "amount": "12345",
-                "denom": "hard"
+                "denom": "jinx"
               }
             ]
           },
@@ -2650,7 +2650,7 @@
             "rewards_per_second": [
               {
                 "amount": "12345",
-                "denom": "hard"
+                "denom": "jinx"
               }
             ]
           },
@@ -2662,7 +2662,7 @@
             "rewards_per_second": [
               {
                 "amount": "12345",
-                "denom": "hard"
+                "denom": "jinx"
               }
             ]
           },
@@ -2674,7 +2674,7 @@
             "rewards_per_second": [
               {
                 "amount": "12345",
-                "denom": "hard"
+                "denom": "jinx"
               }
             ]
           },
@@ -2686,7 +2686,7 @@
             "rewards_per_second": [
               {
                 "amount": "12345",
-                "denom": "hard"
+                "denom": "jinx"
               }
             ]
           },
@@ -2698,7 +2698,7 @@
             "rewards_per_second": [
               {
                 "amount": "12345",
-                "denom": "hard"
+                "denom": "jinx"
               }
             ]
           }
@@ -2712,7 +2712,7 @@
             "rewards_per_second": [
               {
                 "amount": "316880",
-                "denom": "hard"
+                "denom": "jinx"
               },
               {
                 "amount": "316880",
@@ -2782,7 +2782,7 @@
           },
           {
             "active": true,
-            "collateral_type": "hard:musd",
+            "collateral_type": "jinx:musd",
             "start": "2021-12-08T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
@@ -2905,7 +2905,7 @@
         ],
         "claim_multipliers": [
           {
-            "denom": "hard",
+            "denom": "jinx",
             "multipliers": [
               {
                 "name": "large",
@@ -2941,11 +2941,11 @@
         "accumulation_times": [],
         "multi_reward_indexes": []
       },
-      "hard_supply_reward_state": {
+      "jinx_supply_reward_state": {
         "accumulation_times": [],
         "multi_reward_indexes": []
       },
-      "hard_borrow_reward_state": {
+      "jinx_borrow_reward_state": {
         "accumulation_times": [],
         "multi_reward_indexes": []
       },
@@ -2958,7 +2958,7 @@
         "multi_reward_indexes": []
       },
       "musd_minting_claims": [],
-      "hard_liquidity_provider_claims": [],
+      "jinx_liquidity_provider_claims": [],
       "delegator_claims": [],
       "swap_claims": [],
       "savings_reward_state": {
@@ -3037,7 +3037,7 @@
           },
           {
             "owner": "fury1vlpsrmdyuywvaqrv7rx6xga224sqfwz39659tg",
-            "denom": "hard",
+            "denom": "jinx",
             "blocked_addresses": [],
             "paused": false,
             "blockable": false,
@@ -3222,8 +3222,8 @@
           },
           {
             "active": true,
-            "base_asset": "hard",
-            "market_id": "hard:usd",
+            "base_asset": "jinx",
+            "market_id": "jinx:usd",
             "oracles": [
               "fury1acge4tcvhf3q6fh53fgwaa7vsq40wvx6zdfaun"
             ],
@@ -3231,8 +3231,8 @@
           },
           {
             "active": true,
-            "base_asset": "hard",
-            "market_id": "hard:usd:30",
+            "base_asset": "jinx",
+            "market_id": "jinx:usd:30",
             "oracles": [
               "fury1acge4tcvhf3q6fh53fgwaa7vsq40wvx6zdfaun"
             ],
@@ -3504,13 +3504,13 @@
         },
         {
           "expiry": "2023-07-20T00:00:00Z",
-          "market_id": "hard:usd",
+          "market_id": "jinx:usd",
           "oracle_address": "fury1acge4tcvhf3q6fh53fgwaa7vsq40wvx6zdfaun",
           "price": "0.500000000000000000"
         },
         {
           "expiry": "2023-07-20T00:00:00Z",
-          "market_id": "hard:usd:30",
+          "market_id": "jinx:usd:30",
           "oracle_address": "fury1acge4tcvhf3q6fh53fgwaa7vsq40wvx6zdfaun",
           "price": "0.500000000000000000"
         },
@@ -3547,7 +3547,7 @@
           "bfury-furyvaloper1ypjp0m04pyp73hwgtc0dgkx0e9rrydecmmtjay",
           "musd",
           "ufury",
-          "hard",
+          "jinx",
           "swp",
           "bfury",
           "erc20/multichain/usdc"
@@ -3591,7 +3591,7 @@
             "token_b": "musd"
           },
           {
-            "token_a": "hard",
+            "token_a": "jinx",
             "token_b": "musd"
           },
           {
@@ -3647,10 +3647,10 @@
           "total_shares": "4472135954"
         },
         {
-          "pool_id": "hard:musd",
+          "pool_id": "jinx:musd",
           "reserves_a": {
             "amount": "1000000000",
-            "denom": "hard"
+            "denom": "jinx"
           },
           "reserves_b": {
             "amount": "1000000000",
@@ -3691,7 +3691,7 @@
         },
         {
           "depositor": "fury173w2zz287s36ewnnkf4mjansnthnnsz704759s",
-          "pool_id": "hard:musd",
+          "pool_id": "jinx:musd",
           "shares_owned": "1000000000"
         },
         {

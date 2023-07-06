@@ -3,7 +3,7 @@ package cmd
 import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/incubus-network/nemo/app"
+	"github.com/merlin-network/nemo/app"
 	"github.com/spf13/cobra"
 
 	"github.com/fanfury-sports/nmtool/cmd/testnet"

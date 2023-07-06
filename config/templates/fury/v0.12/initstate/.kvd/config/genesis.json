@@ -39,7 +39,7 @@
             "address": "fury1nzenvfcapyjr9qe3cr3c5k2aucssg6wn6dz76h",
             "coins": [
               {
-                "denom": "hard",
+                "denom": "jinx",
                 "amount": "1000000000000"
               }
             ],
@@ -79,7 +79,7 @@
             "address": "fury1e3qvdzau5ww0m43d00gqj0ncgy8j03ndy8820s",
             "coins": [
               {
-                "denom": "hard",
+                "denom": "jinx",
                 "amount": "1000000000000"
               }
             ],
@@ -255,7 +255,7 @@
               },
               {
                 "amount": "100000000000000",
-                "denom": "hard"
+                "denom": "jinx"
               },
               {
                 "amount": "1000000000000",
@@ -949,7 +949,7 @@
               "end": "2024-10-16T14:00:00Z",
               "rewards_per_second": {
                 "amount": "1267522",
-                "denom": "hard"
+                "denom": "jinx"
               },
               "start": "2020-10-16T14:00:00Z"
             },
@@ -976,7 +976,7 @@
             "end": "2024-10-16T14:00:00Z",
             "rewards_per_second": {
               "amount": "310543",
-              "denom": "hard"
+              "denom": "jinx"
             },
             "start": "2020-10-07T14:00:00Z"
           },
@@ -995,11 +995,11 @@
                 "name": "large"
               }
             ],
-            "deposit_denom": "hard",
+            "deposit_denom": "jinx",
             "end": "2024-10-16T14:00:00Z",
             "rewards_per_second": {
               "amount": "285193",
-              "denom": "hard"
+              "denom": "jinx"
             },
             "start": "2020-10-07T14:00:00Z"
           },
@@ -1022,7 +1022,7 @@
             "end": "2024-10-16T14:00:00Z",
             "rewards_per_second": {
               "amount": "12675",
-              "denom": "hard"
+              "denom": "jinx"
             },
             "start": "2020-10-07T14:00:00Z"
           },
@@ -1045,7 +1045,7 @@
             "end": "2024-10-16T14:00:00Z",
             "rewards_per_second": {
               "amount": "25350",
-              "denom": "hard"
+              "denom": "jinx"
             },
             "start": "2020-10-07T14:00:00Z"
           }

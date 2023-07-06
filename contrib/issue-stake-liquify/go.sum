@@ -681,8 +681,8 @@ github.com/kava-labs/go-tools v0.0.0-20221005165250-b4c4f9f7e390 h1:N/BhW7nlt/zk
 github.com/kava-labs/go-tools v0.0.0-20221005165250-b4c4f9f7e390/go.mod h1:jignPuIhdrfAf71cn0hJXA89BhAkUZnu01i/H1bZDGM=
 github.com/kava-labs/go-tools v0.0.0-20221005173922-f83a05d33945 h1:Jgo+fVMV9G35uewFaZLqSub8MQX3rVTaBVNY+TCvR1A=
 github.com/kava-labs/go-tools v0.0.0-20221005173922-f83a05d33945/go.mod h1:jignPuIhdrfAf71cn0hJXA89BhAkUZnu01i/H1bZDGM=
-github.com/incubus-network/nemo v0.17.2-0.20221003233729-4c879bc4fbb7 h1:EGGbqaLAPsVqIQdYGJUDrud1fR/fAmWlknDey/GkzmY=
-github.com/incubus-network/nemo v0.17.2-0.20221003233729-4c879bc4fbb7/go.mod h1:McC/WNEHCz7Ylho0L22ilcCovCFfEyVJtKZtyffvePA=
+github.com/merlin-network/nemo v0.17.2-0.20221003233729-4c879bc4fbb7 h1:EGGbqaLAPsVqIQdYGJUDrud1fR/fAmWlknDey/GkzmY=
+github.com/merlin-network/nemo v0.17.2-0.20221003233729-4c879bc4fbb7/go.mod h1:McC/WNEHCz7Ylho0L22ilcCovCFfEyVJtKZtyffvePA=
 github.com/kava-labs/tm-db v0.6.7-nemo.1 h1:7cVYlvWx1yP+gGdaAWcfm6NwMLzf4z6DxXguWn3+O3w=
 github.com/kava-labs/tm-db v0.6.7-nemo.1/go.mod h1:HVZfZzWXuqWseXQVplxsWXK6kLHLkk3kQB6c+nuSZvk=
 github.com/keybase/go-keychain v0.0.0-20190712205309-48d3d31d256d h1:Z+RDyXzjKE0i2sTjZ/b1uxiGtPhFy34Ou/Tk0qwN0kM=

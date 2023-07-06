@@ -2,7 +2,7 @@
   "params": {
     "allowed_pools": [
       { "token_a": "ufury", "token_b": "musd" },
-      { "token_a": "hard", "token_b": "musd" },
+      { "token_a": "jinx", "token_b": "musd" },
       {
         "token_a": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
         "token_b": "musd"
@@ -41,10 +41,10 @@
       "total_shares": "4472135954"
     },
     {
-      "pool_id": "hard:musd",
+      "pool_id": "jinx:musd",
       "reserves_a": {
         "amount": "1000000000",
-        "denom": "hard"
+        "denom": "jinx"
       },
       "reserves_b": {
         "amount": "1000000000",
@@ -85,7 +85,7 @@
     },
     {
       "depositor": "$whale",
-      "pool_id": "hard:musd",
+      "pool_id": "jinx:musd",
       "shares_owned": "1000000000"
     },
     {

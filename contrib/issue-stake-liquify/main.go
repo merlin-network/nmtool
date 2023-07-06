@@ -17,10 +17,10 @@ import (
 	"github.com/kava-labs/go-tools/grpc"
 	"github.com/kava-labs/go-tools/signing"
 
-	"github.com/incubus-network/nemo/app"
-	earntypes "github.com/incubus-network/nemo/x/earn/types"
-	issuancetypes "github.com/incubus-network/nemo/x/issuance/types"
-	liquidtypes "github.com/incubus-network/nemo/x/liquid/types"
+	"github.com/merlin-network/nemo/app"
+	earntypes "github.com/merlin-network/nemo/x/earn/types"
+	issuancetypes "github.com/merlin-network/nemo/x/issuance/types"
+	liquidtypes "github.com/merlin-network/nemo/x/liquid/types"
 )
 
 const (

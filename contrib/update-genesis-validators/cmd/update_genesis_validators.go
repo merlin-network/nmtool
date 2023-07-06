@@ -28,8 +28,8 @@ import (
 	pvtypes "github.com/tendermint/tendermint/privval"
 	tmtypes "github.com/tendermint/tendermint/types"
 
-	"github.com/incubus-network/nemo/app"
-	committeetypes "github.com/incubus-network/nemo/x/committee/types"
+	"github.com/merlin-network/nemo/app"
+	committeetypes "github.com/merlin-network/nemo/x/committee/types"
 )
 
 // flag options for the command

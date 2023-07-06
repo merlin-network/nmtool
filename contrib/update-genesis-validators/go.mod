@@ -5,7 +5,7 @@ go 1.20
 require (
 	cosmossdk.io/math v1.0.0-beta.6.0.20230216172121-959ce49135e4
 	github.com/cosmos/cosmos-sdk v0.46.11
-	github.com/incubus-network/nemo v0.23.1
+	github.com/kava-labs/kava v0.23.1
 	github.com/spf13/cobra v1.6.1
 	github.com/tendermint/tendermint v0.34.27
 )
@@ -175,9 +175,9 @@ require (
 
 replace (
 	// Use cosmos-sdk fork with backported fix for unsafe-reset-all, staking transfer events, and custom tally handler support
-	github.com/cosmos/cosmos-sdk => github.com/kava-labs/cosmos-sdk v0.46.11-nemo.1
+	github.com/cosmos/cosmos-sdk => github.com/kava-labs/cosmos-sdk v0.46.11-kava.1
 	// Use ethermint fork that respects min-gas-price with NoBaseFee true and london enabled, and includes eip712 support
-	github.com/evmos/ethermint => github.com/kava-labs/ethermint v0.21.0-nemo-v23-1
+	github.com/evmos/ethermint => github.com/kava-labs/ethermint v0.21.0-kava-v23-1
 	// Use the cosmos modified protobufs
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 	// Downgraded to avoid bugs in following commits which causes "version does not exist" errors
@@ -185,5 +185,5 @@ replace (
 	// Use cometbft fork of tendermint
 	github.com/tendermint/tendermint => github.com/cometbft/cometbft v0.34.27
 	// Indirect dependencies still use tendermint/tm-db
-	github.com/tendermint/tm-db => github.com/kava-labs/tm-db v0.6.7-nemo.1
+	github.com/tendermint/tm-db => github.com/kava-labs/tm-db v0.6.7-kava.1
 )
