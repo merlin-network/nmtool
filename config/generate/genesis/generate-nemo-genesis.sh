@@ -137,26 +137,26 @@ function add-genesis-account {
   # The different account overrides can be see in ./auth.accounts/*.json
   $BINARY add-genesis-account "$account_name_or_addr" "$initial_funds"
 }
-# add-genesis-account-key initiates an account with funds & adds the user's mfurynic to the keyring
+# add-genesis-account-key initiates an account with funds & adds the user's mnemonic to the keyring
 function add-genesis-account-key {
   account_name=$1
-  mfurynic_path=$2
+  mnemonic_path=$2
   initial_funds=$3
 
-  mfurynic=$(jq -r "$mfurynic_path.mfurynic" $ADDRESSES)
+  mnemonic=$(jq -r "$mnemonic_path.mnemonic" $ADDRESSES)
 
-  echo "$mfurynic" | $BINARY keys add "$account_name" --recover
+  echo "$mnemonic" | $BINARY keys add "$account_name" --recover
   add-genesis-account "$account_name" "$initial_funds"
 }
 # same as above, but use --eth (for coin type 60 & ethermint's ethsecp256k1 signing algorithm)
 function add-eth-genesis-account-key {
   account_name=$1
-  mfurynic_path=$2
+  mnemonic_path=$2
   initial_funds=$3
 
-  mfurynic=$(jq -r "$mfurynic_path.mfurynic" $ADDRESSES)
+  mnemonic=$(jq -r "$mnemonic_path.mnemonic" $ADDRESSES)
 
-  echo "$mfurynic" | $BINARY keys add "$account_name" --eth --recover
+  echo "$mnemonic" | $BINARY keys add "$account_name" --eth --recover
   add-genesis-account "$account_name" "$initial_funds"
 }
 function get-address {

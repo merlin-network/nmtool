@@ -178,11 +178,11 @@ You can always import or generate new eth accounts as well:
 # generate new account
 dfury keys add new-eth-account --eth
 
-# recover an eth account from a mfurynic
+# recover an eth account from a mnemonic
 dfury keys add new-eth-account2 --eth --recover
 eth flag specified: using coin-type 60 and signing algorithm eth_secp256k1
-> Enter your bip39 mfurynic
-# enter your mfurynic here
+> Enter your bip39 mnemonic
+# enter your mnemonic here
 
 # import an eth account from a hex-encoded ethereum private key
 nemo keys unsafe-import-eth-key new-eth-account3 [priv-key]

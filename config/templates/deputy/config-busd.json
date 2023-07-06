@@ -61,10 +61,10 @@
     "prometheus_listen_addr": "0.0.0.0:9090"
   },
   "bnb_config": {
-    "key_type": "mfurynic",
+    "key_type": "mnemonic",
     "aws_region": "",
     "aws_secret_name": "",
-    "mfurynic": "bachelor also save receive tennis equal sign frog purse elevator gesture elegant legend drastic sorry sing consider project decrease critic thought screen detect honey",
+    "mnemonic": "bachelor also save receive tennis equal sign frog purse elevator gesture elegant legend drastic sorry sing consider project decrease critic thought screen detect honey",
     "rpc_addr": "http://bnbnode:26657",
     "symbol": "BUSD-BD1",
     "deputy_addr": "bnb1j20j0e62n2l9sefxnu596a6jyn5x29lk2syd5j",
@@ -74,10 +74,10 @@
     "bnb_balance_alert_threshold": 50000000
   },
   "fury_config": {
-    "key_type": "mfurynic",
+    "key_type": "mnemonic",
     "aws_region": "",
     "aws_secret_name": "",
-    "mfurynic": "grab charge flame lamp genuine accuse truth orange split can faith spoon twist romance input raccoon tissue slice hire sauce hope fork primary unlock",
+    "mnemonic": "grab charge flame lamp genuine accuse truth orange split can faith spoon twist romance input raccoon tissue slice hire sauce hope fork primary unlock",
     "rpc_addr": "tcp://furynode:26657",
     "symbol": "busd",
     "deputy_addr": "fury1j9je7f6s0v6k7dmgv6u5k5ru202f5ffs5qqm2a",

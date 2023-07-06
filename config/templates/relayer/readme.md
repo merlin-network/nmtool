@@ -58,11 +58,11 @@ here's the diff:
 ```
 4. generate the keys used by the relayer. we use the `relayer` account from [`addresses.json`](../../common/addresses.json):
 ```bash
-export RELAYER_MFURYNIC='very health column only surface project output absent outdoor siren reject era legend legal twelve setup roast lion rare tunnel devote style random food'
+export RELAYER_MNEMONIC='very health column only surface project output absent outdoor siren reject era legend legal twelve setup roast lion rare tunnel devote style random food'
 # add the key for nemo
-docker run -v $PWD/temp:/home/relayer/.relayer --network generated_default nemo/relayer:v2.2.0 rly keys restore --coin-type 459 nemo testkey "$RELAYER_MFURYNIC"
+docker run -v $PWD/temp:/home/relayer/.relayer --network generated_default nemo/relayer:v2.2.0 rly keys restore --coin-type 459 nemo testkey "$RELAYER_MNEMONIC"
 # add the key for ibcchain
-docker run -v $PWD/temp:/home/relayer/.relayer --network generated_default nemo/relayer:v2.2.0 rly keys restore --coin-type 459 ibcchain testkey "$RELAYER_MFURYNIC"
+docker run -v $PWD/temp:/home/relayer/.relayer --network generated_default nemo/relayer:v2.2.0 rly keys restore --coin-type 459 ibcchain testkey "$RELAYER_MNEMONIC"
 ```
 
 That's it! Verify your configured relayer accounts have a balance on each chain:

@@ -61,10 +61,10 @@
     "prometheus_listen_addr": "0.0.0.0:9090"
   },
   "bnb_config": {
-    "key_type": "mfurynic",
+    "key_type": "mnemonic",
     "aws_region": "",
     "aws_secret_name": "",
-    "mfurynic": "almost design doctor exist destroy candy zebra insane client grocery govern idea library degree two rebuild coffee hat scene deal average fresh measure potato",
+    "mnemonic": "almost design doctor exist destroy candy zebra insane client grocery govern idea library degree two rebuild coffee hat scene deal average fresh measure potato",
     "rpc_addr": "http://bnbnode:26657",
     "symbol": "BNB",
     "deputy_addr": "bnb1zfa5vmsme2v3ttvqecfleeh2xtz5zghh49hfqe",
@@ -74,10 +74,10 @@
     "bnb_balance_alert_threshold": 2000000000000
   },
   "fury_config": {
-    "key_type": "mfurynic",
+    "key_type": "mnemonic",
     "aws_region": "",
     "aws_secret_name": "",
-    "mfurynic": "curtain camp spoil tiny vehicle pottery deer corn truly banner salmon lift yard throw open move state lamp van sign glow glue shrug faith",
+    "mnemonic": "curtain camp spoil tiny vehicle pottery deer corn truly banner salmon lift yard throw open move state lamp van sign glow glue shrug faith",
     "rpc_addr": "tcp://furynode:26657",
     "symbol": "bnb",
     "deputy_addr": "fury1agcvt07tcw0tglu0hmwdecsnuxp2yd4590q7dn",

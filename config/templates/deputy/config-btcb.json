@@ -61,10 +61,10 @@
     "prometheus_listen_addr": "0.0.0.0:9090"
   },
   "bnb_config": {
-    "key_type": "mfurynic",
+    "key_type": "mnemonic",
     "aws_region": "",
     "aws_secret_name": "",
-    "mfurynic": "enjoy soldier replace ugly glimpse rude sponsor hood jewel inner hole tower initial drive jungle resist answer display capable give lesson mule spray whisper",
+    "mnemonic": "enjoy soldier replace ugly glimpse rude sponsor hood jewel inner hole tower initial drive jungle resist answer display capable give lesson mule spray whisper",
     "rpc_addr": "http://bnbnode:26657",
     "symbol": "BTCB-1DE",
     "deputy_addr": "bnb1z8ryd66lhc4d9c0mmxx9zyyq4t3cqht9mt0qz3",
@@ -74,10 +74,10 @@
     "bnb_balance_alert_threshold": 50000000
   },
   "fury_config": {
-    "key_type": "mfurynic",
+    "key_type": "mnemonic",
     "aws_region": "",
     "aws_secret_name": "",
-    "mfurynic": "shed crush identify inmate fault truck raw sausage afford fiction day delay people shrimp firm group maple square host thank motor radio visual cable",
+    "mnemonic": "shed crush identify inmate fault truck raw sausage afford fiction day delay people shrimp firm group maple square host thank motor radio visual cable",
     "rpc_addr": "tcp://furynode:26657",
     "symbol": "btcb",
     "deputy_addr": "fury1kla4wl0ccv7u85cemvs3y987hqk0afcvjjptza",

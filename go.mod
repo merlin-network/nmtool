@@ -7,7 +7,7 @@ require (
 	github.com/Jeffail/gabs/v2 v2.6.0
 	github.com/cenkalti/backoff/v4 v4.1.3
 	github.com/cosmos/cosmos-sdk v0.46.11
-	github.com/merlin-network/nemo v0.1.3
+	github.com/merlin-network/nemo v0.2.1
 	github.com/kava-labs/go-tools v0.0.0-20221224222255-39c4be283202
 	github.com/otiai10/copy v1.6.0
 	github.com/spf13/cobra v1.6.1

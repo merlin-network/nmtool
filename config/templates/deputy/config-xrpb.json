@@ -61,10 +61,10 @@
     "prometheus_listen_addr": "0.0.0.0:9090"
   },
   "bnb_config": {
-    "key_type": "mfurynic",
+    "key_type": "mnemonic",
     "aws_region": "",
     "aws_secret_name": "",
-    "mfurynic": "forward argue march dignity puzzle celery caught maze judge chair cement choice bamboo pulse else local foam abuse crazy bullet feed hero rose seat",
+    "mnemonic": "forward argue march dignity puzzle celery caught maze judge chair cement choice bamboo pulse else local foam abuse crazy bullet feed hero rose seat",
     "rpc_addr": "http://bnbnode:26657",
     "symbol": "XRP-BF2",
     "deputy_addr": "bnb1ryrenacljwghhc5zlnxs3pd86amta3jcaagyt0",
@@ -74,10 +74,10 @@
     "bnb_balance_alert_threshold": 50000000
   },
   "fury_config": {
-    "key_type": "mfurynic",
+    "key_type": "mnemonic",
     "aws_region": "",
     "aws_secret_name": "",
-    "mfurynic": "trial friend silly sugar maid behave slim onion swap report inmate hold hammer hip wrist above sketch mean fence reason master green panel chimney",
+    "mnemonic": "trial friend silly sugar maid behave slim onion swap report inmate hold hammer hip wrist above sketch mean fence reason master green panel chimney",
     "rpc_addr": "tcp://furynode:26657",
     "symbol": "xrpb",
     "deputy_addr": "fury14q5sawxdxtpap5x5sgzj7v4sp3ucncjldztrjc",

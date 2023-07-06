@@ -3,8 +3,8 @@ const FURY_ENDPOINT_NMTOOL = "http://localhost:1317";
 const BINANCE_CHAIN_ENDPOINT_NMTOOL = "http://localhost:8080";
 
 // Mnemonics
-const LOADED_FURY_MFURYNIC = "arrive guide way exit polar print kitchen hair series custom siege afraid shrug crew fashion mind script divorce pattern trust project regular robust safe";
-const LOADED_BINANCE_CHAIN_MFURYNIC = "village fiscal december liquid better drink disorder unusual tent ivory cage diesel bike slab tilt spray wife neck oak science beef upper chapter blade";
+const LOADED_FURY_MNEMONIC = "arrive guide way exit polar print kitchen hair series custom siege afraid shrug crew fashion mind script divorce pattern trust project regular robust safe";
+const LOADED_BINANCE_CHAIN_MNEMONIC = "village fiscal december liquid better drink disorder unusual tent ivory cage diesel bike slab tilt spray wife neck oak science beef upper chapter blade";
 
 // BEP3 assets
 const BEP3_ASSETS = {
@@ -36,8 +36,8 @@ const FURY_ENDPOINT_NMTOOL = "http://localhost:1317";
 const BINANCE_CHAIN_ENDPOINT_NMTOOL = "http://localhost:8080";
 
 // Mnemonics
-const LOADED_FURY_MFURYNIC = "arrive guide way exit polar print kitchen hair series custom siege afraid shrug crew fashion mind script divorce pattern trust project regular robust safe";
-const LOADED_BINANCE_CHAIN_MFURYNIC = "village fiscal december liquid better drink disorder unusual tent ivory cage diesel bike slab tilt spray wife neck oak science beef upper chapter blade";
+const LOADED_FURY_MNEMONIC = "arrive guide way exit polar print kitchen hair series custom siege afraid shrug crew fashion mind script divorce pattern trust project regular robust safe";
+const LOADED_BINANCE_CHAIN_MNEMONIC = "village fiscal december liquid better drink disorder unusual tent ivory cage diesel bike slab tilt spray wife neck oak science beef upper chapter blade";
 
 // BEP3 assets
 const BEP3_ASSETS = {
@@ -74,8 +74,8 @@ const BEP3_ASSETS = {
 module.exports = {
   FURY_ENDPOINT_NMTOOL,
   BINANCE_CHAIN_ENDPOINT_NMTOOL,
-  LOADED_FURY_MFURYNIC,
-  LOADED_BINANCE_CHAIN_MFURYNIC,
+  LOADED_FURY_MNEMONIC,
+  LOADED_BINANCE_CHAIN_MNEMONIC,
   BEP3_ASSETS
 }
 
@@ -88,7 +88,7 @@ module.exports = {
 module.exports = {
   FURY_ENDPOINT_NMTOOL,
   BINANCE_CHAIN_ENDPOINT_NMTOOL,
-  LOADED_FURY_MFURYNIC,
-  LOADED_BINANCE_CHAIN_MFURYNIC,
+  LOADED_FURY_MNEMONIC,
+  LOADED_BINANCE_CHAIN_MNEMONIC,
   BEP3_ASSETS
 }

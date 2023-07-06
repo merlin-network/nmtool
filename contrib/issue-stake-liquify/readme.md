@@ -10,7 +10,7 @@ From the configuration input (see below) it will:
 
 ## Initial Setup
 
-Configure a `.env` for what network to connect to and the mfurynics for necessary accounts. See [.example.env](./.example.env) for details on required environment variables.
+Configure a `.env` for what network to connect to and the mnemonics for necessary accounts. See [.example.env](./.example.env) for details on required environment variables.
 
 The script is run by passing the configuration JSON via stdin.
 
@@ -117,7 +117,7 @@ The above configuration defines two accounts with the following delegations:
 * Account 0 delegates 1M FURY to Validator 0 & Validator 1
 * Account 1 delegates 5k FURY to Validator 0 & Validator 1
 
-Accounts are generated from the same mfurynic with different account indexes in the HD path.
+Accounts are generated from the same mnemonic with different account indexes in the HD path.
 
 ### Custom Distributions
 

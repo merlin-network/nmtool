@@ -60,7 +60,7 @@ func ProcessDelegationAllocations(cfg config.Config, allocations config.Allocati
 	numAccounts := allocations.GetNumAccounts()
 
 	// create a signer for each account and determine total delegation
-	// accounts are generated from the same mfurynic, using different address indices in the hd path
+	// accounts are generated from the same mnemonic, using different address indices in the hd path
 	signerByIdx := make(map[int]*signing.Signer, len(allocations.Delegations))
 	totalByIdx := make(map[int]sdk.Int, len(allocations.Delegations))
 	for addressIdx := 0; addressIdx < numAccounts; addressIdx++ {
@@ -152,7 +152,7 @@ type Data struct {
 	AddressIdx int
 }
 
-// SignerFactory returns a function of mfurynic & address index that creates a signer for that account
+// SignerFactory returns a function of mnemonic & address index that creates a signer for that account
 func SignerFactory(chainID, grpcEndpoint string) func(string, int) *signing.Signer {
 	grpcConn, err := grpc.NewGrpcConnection(grpcEndpoint)
 	if err != nil {
@@ -163,11 +163,11 @@ func SignerFactory(chainID, grpcEndpoint string) func(string, int) *signing.Sign
 	authClient := authtypes.NewQueryClient(grpcConn)
 	txClient := txtypes.NewServiceClient(grpcConn)
 
-	return func(mfurynic string, addressIdx int) *signing.Signer {
+	return func(mnemonic string, addressIdx int) *signing.Signer {
 		hdPath := hd.CreateHDPath(app.Bip44CoinType, 0, uint32(addressIdx))
-		privKeyBytes, err := hd.Secp256k1.Derive()(mfurynic, "", hdPath.String())
+		privKeyBytes, err := hd.Secp256k1.Derive()(mnemonic, "", hdPath.String())
 		if err != nil {
-			log.Fatalf("failed to generate mfurynic for account %d: %s", addressIdx, privKeyBytes)
+			log.Fatalf("failed to generate mnemonic for account %d: %s", addressIdx, privKeyBytes)
 		}
 		privKey := &secp256k1.PrivKey{Key: privKeyBytes}
 
