@@ -1,5 +1,5 @@
 install:
-	go install -ldflags "-X github.com/fanfury-sports/nmtool/config/generate.ConfigTemplatesDir=$(CURDIR)/config/templates"
+	go install -ldflags "-X github.com/merlin-network/nmtool/config/generate.ConfigTemplatesDir=$(CURDIR)/config/templates"
 
 generate-nemo-genesis:
 	bash ./config/generate/genesis/generate-nemo-genesis.sh

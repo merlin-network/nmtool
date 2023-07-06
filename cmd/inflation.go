@@ -6,7 +6,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/fanfury-sports/nmtool/nemoclient"
+	"github.com/merlin-network/nmtool/nemoclient"
 )
 
 func InflationRootCmd() *cobra.Command {

@@ -8,7 +8,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/fanfury-sports/nmtool/config/generate"
+	"github.com/merlin-network/nmtool/config/generate"
 )
 
 const (

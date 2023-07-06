@@ -6,7 +6,7 @@ import (
 	"github.com/merlin-network/nemo/app"
 	"github.com/spf13/cobra"
 
-	"github.com/fanfury-sports/nmtool/cmd/testnet"
+	"github.com/merlin-network/nmtool/cmd/testnet"
 )
 
 var furyGrpcUrl string

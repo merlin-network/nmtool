@@ -1,4 +1,4 @@
-module github.com/fanfury-sports/nmtool/contrib/issue-stake-liquify
+module github.com/merlin-network/nmtool/contrib/issue-stake-liquify
 
 go 1.17
 

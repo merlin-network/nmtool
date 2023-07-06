@@ -1,6 +1,6 @@
 package main
 
-import "github.com/fanfury-sports/nmtool/cmd"
+import "github.com/merlin-network/nmtool/cmd"
 
 func main() {
 	cmd.Execute()

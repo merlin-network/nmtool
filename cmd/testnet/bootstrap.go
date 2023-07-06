@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/cenkalti/backoff/v4"
-	"github.com/fanfury-sports/nmtool/config/generate"
+	"github.com/merlin-network/nmtool/config/generate"
 	"github.com/spf13/cobra"
 )
 

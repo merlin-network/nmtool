@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/fanfury-sports/nmtool/contrib/update-genesis-validators/cmd"
+	"github.com/merlin-network/nmtool/contrib/update-genesis-validators/cmd"
 	"github.com/merlin-network/nemo/app"
 )
 

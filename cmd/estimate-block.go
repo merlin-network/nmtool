@@ -7,7 +7,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/fanfury-sports/nmtool/nemoclient"
+	"github.com/merlin-network/nmtool/nemoclient"
 )
 
 const estimateBlockTimeFormat = "2006-01-02T15:04"

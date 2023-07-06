@@ -1,4 +1,4 @@
-module github.com/fanfury-sports/nmtool
+module github.com/merlin-network/nmtool
 
 go 1.20
 

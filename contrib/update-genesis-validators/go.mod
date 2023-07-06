@@ -1,4 +1,4 @@
-module github.com/fanfury-sports/nmtool/contrib/update-genesis-validators
+module github.com/merlin-network/nmtool/contrib/update-genesis-validators
 
 go 1.20
 
